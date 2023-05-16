@@ -26,6 +26,32 @@ struct list {
 	}
 };
 
+struct lists {
+	
+	char* name = new char[35] {};
+	list* Notes{};
+	int count{};
+
+	void writeToFile() {
+
+		FILE* file{};
+		fopen_s(&file, "lists.txt", "a+");
+
+		if(file == nullptr)
+		{
+			cout << "Error" << endl;
+			return;
+		}
+
+		fprintf(file, "%s", Notes->toString());
+
+		fclose(file);
+
+	}
+
+};
+
+
 
 
 
