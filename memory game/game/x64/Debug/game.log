@@ -1,4 +1,0 @@
-﻿  game.cpp
-F:\game\game\game.cpp(45,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-F:\game\game\game.cpp(95,55): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
-  game.vcxproj -> F:\game\x64\Debug\game.exe

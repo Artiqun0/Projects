@@ -1,5 +1,0 @@
-﻿  patnashki.cpp
-F:\patnashki\patnashki\patnashki.cpp(43,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-F:\patnashki\patnashki\patnashki.cpp(87,12): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
-F:\patnashki\patnashki\patnashki.cpp(205,12): warning C4244: 'initializing': conversion from 'time_t' to 'int', possible loss of data
-  patnashki.vcxproj -> F:\patnashki\x64\Debug\patnashki.exe
