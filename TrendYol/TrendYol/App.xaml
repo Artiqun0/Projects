@@ -7,12 +7,12 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <DataTemplate DataType="{x:Type ViewModel:WalletDataViewModel}">
-                <View:WalletData/>
+            <DataTemplate DataType="{x:Type ViewModel:LoginViewModel}">
+                <View:Login/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:CountOperationViewModel}">
-                <View:CountOperation/>
+            <DataTemplate DataType="{x:Type ViewModel:RegisterViewModel}">
+                <View:RegisterView/>
             </DataTemplate>
             
             <ResourceDictionary.MergedDictionaries>

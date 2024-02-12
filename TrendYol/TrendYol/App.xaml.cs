@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using SimpleInjector;
-using TrendYol.Message;
-using TrendYol.ViewModel;
+using TrendYol.Messages;
+using TrendYol.ViewModels;
 using TrendYol.Services.Interfaces;
 using TrendYol.Services.Classes;
 using GalaSoft.MvvmLight.Messaging;
@@ -18,9 +18,7 @@ namespace TrendYol;
 
             Container.RegisterSingleton<INavigationService, NavigationService>();
 
-            Container.RegisterSingleton<DataMessage>();
-            Container.RegisterSingleton<DataMessages>();
-            Container.RegisterSingleton<IMessenger, Messenger>();
+            
 
             Container.Verify();
         }
