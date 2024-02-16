@@ -10,15 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TrendYol.Views
 {
-
-    public partial class RegisterView : UserControl
+    /// <summary>
+    /// Interaction logic for HomePage.xaml
+    /// </summary>
+    public partial class HomePageView : Window
     {
-        public RegisterView()
+        public HomePageView()
         {
             InitializeComponent();
         }

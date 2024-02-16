@@ -13,14 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TrendYol.Views;
+namespace TrendYol.Views
+{
     /// <summary>
-    /// Interaction logic for Login.xaml
+    /// Interaction logic for BalanceView.xaml
     /// </summary>
-    public partial class Login : UserControl
+    public partial class BalanceView : UserControl
     {
-        public Login()
+        public BalanceView()
         {
             InitializeComponent();
         }
     }
+}

@@ -1,20 +1,45 @@
 ﻿<Application x:Class="TrendYol.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:ViewModel="clr-namespace:TrendYol.ViewModels"
-             xmlns:View="clr-namespace:TrendYol.Views"
+             xmlns:ViewModels="clr-namespace:TrendYol.ViewModels"
+             xmlns:Views="clr-namespace:TrendYol.Views"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:TrendYol"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <DataTemplate DataType="{x:Type ViewModel:LoginViewModel}">
-                <View:Login/>
+            <DataTemplate DataType="{x:Type ViewModels:LoginViewModel}">
+                <Views:LoginView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModel:RegisterViewModel}">
-                <View:RegisterView/>
+            <DataTemplate DataType="{x:Type ViewModels:RegisterViewModel}">
+                <Views:RegisterView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModels:HomePageViewModel}">
+                <Views:HomePageView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModels:AccountViewModel}">
+                <Views:AccountView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModels:ForgotPassViewModel}">
+                <Views:ForgotPassView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModels:BalanceViewModel}">
+                <Views:BalanceView/>
             </DataTemplate>
             
+            <DataTemplate DataType="{x:Type ViewModels:ShopViewModel}">
+                <Views:ShopView/>
+            </DataTemplate>
+
+            <!--<DataTemplate DataType="{x:Type ViewModels:OrdersViewModel}">
+                <Views:OrdersUCView/>
+            </DataTemplate>-->
+
+
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Defaults.xaml" />

@@ -1,0 +1,86 @@
+﻿<Window x:Class="TrendYol.Views.HomePageView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TrendYol.Views"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="HomePage" Height="800" Width="1200">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid Grid.Column="0" Background="#a3bb5c">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"></RowDefinition>
+                <RowDefinition Height="0.5*"></RowDefinition>
+                <RowDefinition Height="0.5*"></RowDefinition>
+                <RowDefinition Height="0.5*"></RowDefinition>
+                <RowDefinition Height="0.5*"></RowDefinition>
+                <RowDefinition Height="0.3*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0" >
+                <Button Grid.Row="0" Command="{Binding GoToAdvertising}" BorderThickness="0">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="BorderBrush" Value="Transparent"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button"><ContentPresenter/>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                    <Image Source="C:\project\TrendYol\TrendYol\Photos\TrendyolLogo.png" Stretch="Fill"/>
+                </Button>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Button BorderBrush="Transparent" BorderThickness="0" Background="#ebebea" Command="{Binding GoToShop}">
+                    <StackPanel Orientation="Horizontal">
+                        <md:PackIcon Kind="Shop" Foreground="#090909" Height="30" Width="30"/>
+                        <TextBlock Text="Shop" Foreground="#090909" FontSize="20"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="2">
+                <Button BorderBrush="Transparent" BorderThickness="0" Background="#ebebea">
+                    <StackPanel Orientation="Horizontal" >
+                        <md:PackIcon Kind="OrderBoolAscending" Foreground="#090909" Height="30" Width="30"/>
+                        <TextBlock Text="Orders" Foreground="#090909" FontSize="20"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="3">
+                <Button BorderBrush="Transparent" BorderThickness="0" Background="#ebebea" Command="{Binding GoToAccountInfo}">
+                    <StackPanel Orientation="Horizontal">
+                        <md:PackIcon Kind="Account" Foreground="#090909" Height="30" Width="30"/>
+                        <TextBlock Text="Account" Foreground="#090909" FontSize="20"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+            <Grid Grid.Row="4">
+                <Button BorderBrush="Transparent" BorderThickness="0" Background="#ebebea" Command="{Binding GoToBalance}">
+                    <StackPanel Orientation="Horizontal">
+                        <md:PackIcon Kind="AccountBalanceWallet" Foreground="#090909" Height="30" Width="30"/>
+                        <TextBlock Text="Balance" Foreground="#090909" FontSize="20"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
+
+
+
+        </Grid>
+
+
+
+
+        <ContentControl Grid.Column="1" Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}" Height="780" Width="920"/>
+    </Grid>
+</Window>

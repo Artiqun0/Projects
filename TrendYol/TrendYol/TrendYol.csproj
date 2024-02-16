@@ -9,12 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="Photos\" />
+    <Folder Include="Migrations\" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt.Net" Version="0.1.0" />
     <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.2" />
     <PackageReference Include="MvvmLightLibsStd10" Version="5.4.1.1" />
     <PackageReference Include="SimpleInjector" Version="5.4.4" />
   </ItemGroup>

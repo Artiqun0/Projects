@@ -15,10 +15,12 @@ using System.Windows.Shapes;
 
 namespace TrendYol.Views
 {
-
-    public partial class RegisterView : UserControl
+    /// <summary>
+    /// Interaction logic for AccountView.xaml
+    /// </summary>
+    public partial class AccountView : UserControl
     {
-        public RegisterView()
+        public AccountView()
         {
             InitializeComponent();
         }

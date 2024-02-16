@@ -5,29 +5,37 @@ using TrendYol.ViewModels;
 using TrendYol.Services.Interfaces;
 using TrendYol.Services.Classes;
 using GalaSoft.MvvmLight.Messaging;
+using TrendYol.Views;
 
 namespace TrendYol;
     public partial class App : Application
     {
         public static Container Container { get; set; } = new();
+        public static MainWindowView window = new();
 
-        public void Register()
+
+    public void Register()
         {
             Container.RegisterSingleton<LoginViewModel>();
             Container.RegisterSingleton<MainViewModel>();
+            Container.RegisterSingleton<RegisterViewModel>();
+            Container.RegisterSingleton<AccountViewModel>();
+            Container.RegisterSingleton<ForgotPassViewModel>();
+            Container.RegisterSingleton<HomePageViewModel>();
 
             Container.RegisterSingleton<INavigationService, NavigationService>();
+            Container.RegisterSingleton<IMessenger, Messenger>();
+            Container.RegisterSingleton<IDataService, DataService>();
 
-            
 
-            Container.Verify();
+
+        Container.Verify();
         }
 
         protected override void OnStartup(StartupEventArgs e)
         {
             Register();
 
-            var window = App.Container.GetInstance<MainWindow>();
             window.DataContext = Container.GetInstance<MainViewModel>();
 
 

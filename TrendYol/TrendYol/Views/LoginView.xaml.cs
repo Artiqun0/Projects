@@ -13,14 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace TrendYol.Views
-{
-
-    public partial class RegisterView : UserControl
+namespace TrendYol.Views;
+    
+    public partial class LoginView : UserControl
     {
-        public RegisterView()
+        public LoginView()
         {
             InitializeComponent();
         }
     }
-}
