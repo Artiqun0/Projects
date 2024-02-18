@@ -8,8 +8,15 @@ using System.Threading.Tasks;
 using TrendYol.Models;
 using Microsoft.Extensions.Configuration;
 namespace TrendYol.Context;
-public     class TrendyolDbContext : DbContext
+public class TrendyolDbContext : DbContext
+{
+
+    public TrendyolDbContext()
     {
+
+    }
+
+
     public DbSet<User> User { get; set; }
     public DbSet<Product> Products { get; set; }
     public DbSet<Stock> Stock { get; set; }
@@ -17,7 +24,14 @@ public     class TrendyolDbContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Data Source = localhost; Initial Catalog = TrendYolDb; Integrated Security = True; Pooling = true; Trust Server Certificate = true;");
+        if (!optionsBuilder.IsConfigured)
+        {
+            var builder = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
+                .Build();
+
+            optionsBuilder.UseSqlServer(builder.GetConnectionString("Default"));
+        }
     }
 
 }

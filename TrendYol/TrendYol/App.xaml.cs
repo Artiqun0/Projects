@@ -6,6 +6,7 @@ using TrendYol.Services.Interfaces;
 using TrendYol.Services.Classes;
 using GalaSoft.MvvmLight.Messaging;
 using TrendYol.Views;
+using TrendYol.Context;
 
 namespace TrendYol;
     public partial class App : Application
@@ -28,7 +29,7 @@ namespace TrendYol;
         Container.RegisterSingleton<INavigationService, NavigationService>();
             Container.RegisterSingleton<IMessenger, Messenger>();
             Container.RegisterSingleton<IDataService, DataService>();
-
+        Container.RegisterSingleton<TrendyolDbContext>();
 
 
         Container.Verify();

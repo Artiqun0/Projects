@@ -17,11 +17,9 @@ namespace TrendYol.ViewModels;
     public class RegisterViewModel : ViewModelBase
     {
     private readonly INavigationService navigationService;
-    private readonly IDataService _dataService;
-    private readonly IMessenger _messenger;
+    private readonly TrendyolDbContext _context;
 
 
-    TrendyolDbContext _trendyoulDB = new TrendyolDbContext();
 
 
     private string usernameTextBox;
@@ -91,11 +89,10 @@ namespace TrendYol.ViewModels;
         }
     }
 
-    public RegisterViewModel(IMessenger messenger, IDataService dataService, INavigationService navigation)
+    public RegisterViewModel(INavigationService navigation, TrendyolDbContext context)
     {
         navigationService = navigation;
-        _dataService = dataService;
-        _messenger = messenger;
+        _context = context;
     }
 
     public RelayCommand BackToLogin
@@ -129,8 +126,8 @@ namespace TrendYol.ViewModels;
                     Position = "User"
                 };
 
-                _trendyoulDB.Add(newUser);
-                _trendyoulDB.SaveChanges();
+                _context.User.Add(newUser);
+                _context.SaveChanges();
 
                 MessageBox.Show("Registration completed successfully!");
 
@@ -163,8 +160,8 @@ namespace TrendYol.ViewModels;
         string secretWordRegex = @"^(?!\s)(?!.*\s$)[a-zA-Z0-9\s]{5,20}$";
         string emailRegex = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
 
-        var userNameCheck = _trendyoulDB.User.FirstOrDefault(u => u.Username == TextBox1);
-        var emailCheck = _trendyoulDB.User.FirstOrDefault(u => u.Email == TextBox2);
+        var userNameCheck = _context.User.FirstOrDefault(u => u.Username == TextBox1);
+        var emailCheck = _context.User.FirstOrDefault(u => u.Email == TextBox2);
 
 
         if (t1 == userNameCheck.Username)
