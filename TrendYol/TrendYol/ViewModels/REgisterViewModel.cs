@@ -20,7 +20,6 @@ namespace TrendYol.ViewModels;
     private readonly IDataService _dataService;
     private readonly IMessenger _messenger;
 
-    public CurrentUser _currentUser;
 
     TrendyolDbContext _trendyoulDB = new TrendyolDbContext();
 
@@ -92,15 +91,11 @@ namespace TrendYol.ViewModels;
         }
     }
 
-    public RegisterViewModel(IMessenger messenger, IDataService dataService, INavigationService navigation, CurrentUser currentUser)
+    public RegisterViewModel(IMessenger messenger, IDataService dataService, INavigationService navigation)
     {
         navigationService = navigation;
         _dataService = dataService;
         _messenger = messenger;
-        _currentUser = currentUser;
-
-
-
     }
 
     public RelayCommand BackToLogin
@@ -139,10 +134,10 @@ namespace TrendYol.ViewModels;
 
                 MessageBox.Show("Registration completed successfully!");
 
-                _currentUser.UserName = newUser.Username;
-                _currentUser.Email = newUser.Email;
-                _currentUser.Balance = newUser.Balance;
-                _currentUser.Position = newUser.Position;
+                //_currentUser.Username = newUser.Username;
+                //_currentUser.Email = newUser.Email;
+                //_currentUser.Balance = newUser.Balance;
+                //_currentUser.Position = newUser.Position;
 
 
                 HomePageView newWindow = new HomePageView();

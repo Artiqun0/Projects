@@ -7,13 +7,14 @@
              xmlns:local="clr-namespace:TrendYol"
              mc:Ignorable="d" 
              xmlns:ViewModels="clr-namespace:TrendYol.ViewModels"
+             Background="#a3bb5c"
              
              d:DesignHeight="550" d:DesignWidth="400">
 
     <Grid>
 
         <StackPanel Orientation="Vertical" Margin="20">
-            <TextBlock Text="Login" FontSize="29" Margin="20" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Padding="10"/>
+            <TextBlock Text="Sign up" FontSize="40" Margin="20" Foreground="#090909" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Padding="10"/>
             <Grid VerticalAlignment="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*"/>
@@ -22,37 +23,18 @@
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
 
-                <TextBlock Text="User Name" FontSize="16" Grid.Row="0" Margin="0,15" HorizontalAlignment="Left"/>
-                <TextBox Grid.Column="1" x:Name="usernameTextBox" Text="{Binding TextBox1}" Grid.Row="1" Padding="0,5" Width="360" BorderThickness="0,0,0,1" HorizontalAlignment="Left"/>
-                
-                <TextBlock Text="Password" FontSize="16" Grid.Row="2" Margin="0,15" HorizontalAlignment="Left"/>
-                <TextBox Grid.Row="3" x:Name="passwordTextBox" Text="{Binding TextBox2}" Padding="0,5" Width="360" BorderThickness="0,0,0,1" HorizontalAlignment="Left"/>
-            </Grid>
-            
-            <Button Content="Forgot password?" Command="{Binding ForgotPassword}" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent"/>
-            <Button x:Name="LoginBtn" Content="Login" Foreground="White" Background="Black" Margin="0,25" Height="35" Width="250" Command="{Binding CompleteLogin}"/>
-            <Button>
-                <Style TargetType="Button">
-                    <Setter Property="Template">
-                        <Setter.Value>
-                            <ControlTemplate TargetType="{x:Type Button}">
-                                <Border x:Name="LoginBorder" Background="{TemplateBinding Background}" CornerRadius="15">
-                                    <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
-                                </Border>
-                            </ControlTemplate>
-                        </Setter.Value>
-                    </Setter>
-                </Style>
-            </Button>
+                <TextBlock Text="User Name" FontSize="16" Foreground="#090909" Grid.Row="0" Margin="0,15" HorizontalAlignment="Left"/>
+                <TextBox Grid.Column="1" x:Name="usernameTextBox" Text="{Binding TextBox1}" BorderBrush="#ebebea" Grid.Row="1" Padding="0,5" Width="360" BorderThickness="0,0,0,1" HorizontalAlignment="Left"/>
 
-            <Button Content="Registration"
-                 Command="{Binding DoRegistration}"
-                 CommandParameter="{Binding RelativeSource={RelativeSource Self}}"
-                 Margin="0,5"
-                 BorderThickness="0"
-                 Background="Transparent"
-                 VerticalAlignment="Bottom"
-                 HorizontalAlignment="Center"/>
+                <TextBlock Text="Password" FontSize="16" Foreground="#090909" Grid.Row="2" Margin="0,15" HorizontalAlignment="Left"/>
+                <TextBox Grid.Row="3" x:Name="passwordTextBox" Text="{Binding TextBox2}" Padding="0,5" Width="360" BorderBrush="#ebebea" BorderThickness="0,0,0,1" HorizontalAlignment="Left"/>
+            </Grid>
+
+            <Button Content="Forgot password?" Foreground="#090909" Command="{Binding ForgotPassword}" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent"/>
+            <Button x:Name="LoginBtn" Content="Sign up" Foreground="#090909" BorderBrush="#090909" Background="#ebebea" Margin="0,25" Height="35" Width="250" Command="{Binding CompleteLogin}"/>
+
+
+            <Button Content="Doesn't have an account" Foreground="#090909" Background="#ebebea" Command="{Binding DoRegistration}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Margin="0,5" BorderThickness="0" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
 
         </StackPanel>
 

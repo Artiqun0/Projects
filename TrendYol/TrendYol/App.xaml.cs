@@ -11,7 +11,7 @@ namespace TrendYol;
     public partial class App : Application
     {
         public static Container Container { get; set; } = new();
-        public static MainWindowView window = new();
+        public static MainWindow window = new();
 
 
     public void Register()
@@ -22,8 +22,10 @@ namespace TrendYol;
             Container.RegisterSingleton<AccountViewModel>();
             Container.RegisterSingleton<ForgotPassViewModel>();
             Container.RegisterSingleton<HomePageViewModel>();
+            Container.RegisterSingleton<BalanceViewModel>();
+            Container.RegisterSingleton<ShopViewModel>();
 
-            Container.RegisterSingleton<INavigationService, NavigationService>();
+        Container.RegisterSingleton<INavigationService, NavigationService>();
             Container.RegisterSingleton<IMessenger, Messenger>();
             Container.RegisterSingleton<IDataService, DataService>();
 

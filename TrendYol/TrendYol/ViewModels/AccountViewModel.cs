@@ -14,21 +14,15 @@ namespace TrendYol.ViewModels;
     private readonly INavigationService navigationService;
     private readonly IDataService _dataService;
     private readonly IMessenger _messenger;
-    private readonly CurrentUser _currentUser;
 
 
 
-    public AccountViewModel(IMessenger messenger, IDataService dataService, INavigationService navigation, CurrentUser currentUser)
+    public AccountViewModel(IMessenger messenger, IDataService dataService, INavigationService navigation)
     {
         navigationService = navigation;
         _dataService = dataService;
         _messenger = messenger;
-        _currentUser = currentUser;
     }
-
-    public string UserNameInfo => _currentUser.UserName;
-    public string EmailInfo => _currentUser.Email;
-    public string PositionInfo => _currentUser.Position;
 
 }
 

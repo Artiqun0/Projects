@@ -10,12 +10,26 @@
     <Grid>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Your Account" HorizontalAlignment="Center" FontSize="70" Foreground="#090909" Margin="40"/>
-            <TextBlock Text="User Name: " FontSize="40" Margin="30,10" Foreground="#090909"/>
-            <TextBlock x:Name="UserNameField" Text="{Binding UserNameInfo}" FontSize="30" Foreground="#090909" Margin="30,10"/>
-            <TextBlock Text="E-mail:" FontSize="40" Margin="30,10" Foreground="#090909"/>
-            <TextBlock x:Name="emailField" Text="{Binding EmailInfo}" FontSize="30" Foreground="#090909" Margin="30,10"/>
-            <TextBlock Text="Position:" FontSize="40" Margin="30,10" Foreground="#090909"/>
-            <TextBlock x:Name="PositionField" Text="{Binding PositionInfo}" FontSize="30" Foreground="#090909" Margin="30,10"/>
+            
+            <StackPanel Orientation="Horizontal" Margin="0 70">
+                <TextBlock Text="User Name: " FontSize="40" Margin="30 10" Foreground="#090909"/>
+                <TextBlock x:Name="UserNameField" Background="#ebebea" Foreground="#090909" Width="500" Text="{Binding UserNameInfo}" FontSize="30" HorizontalAlignment="Right" Margin="16 10"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 70">
+                
+                <TextBlock Text="E-mail: " FontSize="40" Margin="30 10" Foreground="#090909"/>
+                <TextBlock x:Name="emailField" Background="#ebebea" Text="{Binding EmailInfo}" Width="500" FontSize="30" Foreground="#090909" HorizontalAlignment="Right" Margin="100 10"/>
+                
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="0 70">
+                
+                <TextBlock Text="Status: " FontSize="40" Margin="30 10" Foreground="#090909"/>
+                <TextBlock x:Name="StatusField" Background="#ebebea" Text="{Binding StatusInfo}" Width="500" FontSize="30" HorizontalAlignment="Right" Foreground="#090909" Margin="100 10"/>
+                
+            </StackPanel>
+            
         </StackPanel>
     </Grid>
 </UserControl>

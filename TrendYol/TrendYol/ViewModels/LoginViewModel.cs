@@ -18,7 +18,6 @@ namespace TrendYol.ViewModels;
     private readonly INavigationService navigationService;
     private readonly IDataService _dataService;
     private readonly IMessenger _messenger;
-    private CurrentUser _currentUser;
 
     TrendyolDbContext _trendyoulDB = new TrendyolDbContext();
 
@@ -49,12 +48,12 @@ namespace TrendYol.ViewModels;
             }
         }
     }
-    public LoginViewModel(IMessenger messenger, IDataService dataService, INavigationService navigation, CurrentUser currentUser)
+    public LoginViewModel(IMessenger messenger, IDataService dataService, INavigationService navigation)
     {
         navigationService = navigation;
         _dataService = dataService;
         _messenger = messenger;
-        _currentUser = currentUser;
+        
     }
     public RelayCommand DoRegistration
     {
@@ -75,10 +74,10 @@ namespace TrendYol.ViewModels;
                 if (BCrypt.Net.BCrypt.Verify(TextBox2, user.Password))
                 {
 
-                    _currentUser.UserName = user.Username;
-                    _currentUser.Email = user.Email;
-                    _currentUser.Balance = user.Balance;
-                    _currentUser.Position = user.Position;
+                    //_currentUser.Username = user.Username;
+                    //_currentUser.Email = user.Email;
+                    //_currentUser.Balance = user.Balance;
+                    //_currentUser.Position = user.Position;
 
                     HomePageView newWindow = new HomePageView();
                     newWindow.DataContext = App.Container.GetInstance<AccountViewModel>();

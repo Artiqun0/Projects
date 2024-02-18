@@ -12,7 +12,6 @@ using TrendYol.Models;
 namespace TrendYol.ViewModels;
     public class BalanceViewModel : ViewModelBase
     {
-    private readonly CurrentUser _currentUser;
     TrendyolDbContext _trendyoulDB = new TrendyolDbContext();
 
     private string AddToBalanceTextBox;
@@ -29,39 +28,39 @@ namespace TrendYol.ViewModels;
             }
         }
     }
-    public BalanceViewModel(CurrentUser currentUser)
-    {
-        _currentUser = currentUser;
-    }
+    //public BalanceViewModel(User currentUser)
+    //{
+    //    _currentUser = currentUser;
+    //}
 
 
-    public string BalanceInfo => _currentUser.Balance.ToString();
+    //public string BalanceInfo => _currentUser.Balance.ToString();
 
 
-    public RelayCommand AddToBalance
-    {
-        get => new(() =>
-        {
-            if (float.TryParse(AddToBalanceTextBox, out float amountToAdd))
-            {
-                _currentUser.Balance += amountToAdd;
+    //public RelayCommand AddToBalance
+    //{
+    //    get => new(() =>
+    //    {
+    //        if (float.TryParse(AddToBalanceTextBox, out float amountToAdd))
+    //        {
+    //            _currentUser.Balance += amountToAdd;
 
 
-                var user = _trendyoulDB.User.FirstOrDefault(u => u.Username == _currentUser.UserName);
-                if (user != null)
-                {
-                    user.Balance = _currentUser.Balance;
-                    _trendyoulDB.SaveChanges();
-                }
-                RaisePropertyChanged(nameof(BalanceInfo));
-            }
-            else
-            {
-                MessageBox.Show("Incorrect value for replenishing the balance.");
-            }
-            TextBox1 = string.Empty;
-        });
-    }
+    //            var user = _trendyoulDB.User.FirstOrDefault(u => u.Username == _currentUser.Username);
+    //            if (user != null)
+    //            {
+    //                user.Balance = _currentUser.Balance;
+    //                _trendyoulDB.SaveChanges();
+    //            }
+    //            RaisePropertyChanged(nameof(BalanceInfo));
+    //        }
+    //        else
+    //        {
+    //            MessageBox.Show("Incorrect value for replenishing the balance.");
+    //        }
+    //        TextBox1 = string.Empty;
+    //    });
+    //}
 
 }
     
