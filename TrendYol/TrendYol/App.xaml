@@ -35,9 +35,9 @@
                 <Views:ShopView/>
             </DataTemplate>
 
-            <!--<DataTemplate DataType="{x:Type ViewModels:OrdersViewModel}">
-                <Views:OrdersUCView/>
-            </DataTemplate>-->
+            <DataTemplate DataType="{x:Type ViewModels:OrdersViewModel}">
+                <Views:OrdersView/>
+            </DataTemplate>
 
 
             <ResourceDictionary.MergedDictionaries>

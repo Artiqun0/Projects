@@ -81,6 +81,6 @@
 
 
 
-        <ContentControl Grid.Column="1" Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}" Height="780" Width="920"/>
+        <ContentControl Grid.Column="1" Content="{Binding CurrentView}" Height="780" Width="920"/>
     </Grid>
 </Window>

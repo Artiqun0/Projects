@@ -18,6 +18,7 @@ namespace TrendYol.ViewModels;
     {
     private readonly INavigationService navigationService;
     private readonly TrendyolDbContext _context;
+    private readonly IDataService _dataService;
 
 
 
@@ -89,10 +90,11 @@ namespace TrendYol.ViewModels;
         }
     }
 
-    public RegisterViewModel(INavigationService navigation, TrendyolDbContext context)
+    public RegisterViewModel(INavigationService navigation, TrendyolDbContext context, IDataService dataService)
     {
         navigationService = navigation;
         _context = context;
+        _dataService = dataService;
     }
 
     public RelayCommand BackToLogin
@@ -131,12 +133,9 @@ namespace TrendYol.ViewModels;
 
                 MessageBox.Show("Registration completed successfully!");
 
-                //_currentUser.Username = newUser.Username;
-                //_currentUser.Email = newUser.Email;
-                //_currentUser.Balance = newUser.Balance;
-                //_currentUser.Position = newUser.Position;
-
-
+                User CurentUser = _context.User.Single(u => u.Email == TextBox2);
+                _dataService.SendData(CurentUser);
+                
                 HomePageView newWindow = new HomePageView();
                 newWindow.DataContext = App.Container.GetInstance<AccountViewModel>();
 
@@ -164,14 +163,17 @@ namespace TrendYol.ViewModels;
         var emailCheck = _context.User.FirstOrDefault(u => u.Email == TextBox2);
 
 
-        if (t1 == userNameCheck.Username)
+        if (userNameCheck != null && emailCheck != null)
         {
-            MessageBox.Show("A user with the same Username already exists.");
-            return false;
-        }
-        if (t2 == emailCheck.Email)
-        {
-            MessageBox.Show("a user with the same email already exists.");
+            if (t1 == userNameCheck.Username)
+            {
+                MessageBox.Show("A user with the same Username already exists.");
+                return false;
+            }
+            if (t2 == emailCheck.Email)
+            {
+                MessageBox.Show("a user with the same email already exists.");
+            }
         }
 
         if (string.IsNullOrWhiteSpace(t1) || !Regex.IsMatch(t1, usernameRegex))

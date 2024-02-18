@@ -8,10 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using TrendYol.Messages;
 using TrendYol.Services.Interfaces;
+using System.Windows;
 
 namespace TrendYol.ViewModels;
-    public class HomePageViewModel : ViewModelBase
-    {
+public class HomePageViewModel : ViewModelBase
+{
     private ViewModelBase _currentView;
     public ViewModelBase CurrentView
     {
@@ -63,5 +64,5 @@ namespace TrendYol.ViewModels;
         });
     }
 }
-    
+
 

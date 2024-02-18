@@ -10,20 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TrendYol.Views
 {
     /// <summary>
-    /// Interaction logic for OrdersView.xaml
+    /// Interaction logic for AdminWindow.xaml
     /// </summary>
-    public partial class OrdersView : UserControl
+    public partial class AdminWindow : Window
     {
-        public OrdersView()
+        public AdminWindow()
         {
             InitializeComponent();
-            //DataContext = new OrdersViewModel();
         }
     }
 }

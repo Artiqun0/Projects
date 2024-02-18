@@ -68,6 +68,7 @@ namespace TrendYol.ViewModels;
         get => new(() =>
         {
             var user = _trendyoulDB.User.FirstOrDefault(u => u.Username == TextBox1);
+            _dataService.SendData(user);
 
             if (user != null)
             {
@@ -80,7 +81,7 @@ namespace TrendYol.ViewModels;
                     //_currentUser.Position = user.Position;
 
                     HomePageView newWindow = new HomePageView();
-                    newWindow.DataContext = App.Container.GetInstance<AccountViewModel>();
+                    newWindow.DataContext = App.Container.GetInstance<HomePageViewModel>();
                     navigationService.NavigateTo<ShopViewModel>();
 
                     App.window.Close();

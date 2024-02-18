@@ -25,11 +25,13 @@ namespace TrendYol;
             Container.RegisterSingleton<HomePageViewModel>();
             Container.RegisterSingleton<BalanceViewModel>();
             Container.RegisterSingleton<ShopViewModel>();
+            Container.RegisterSingleton<OrdersViewModel>();
 
-        Container.RegisterSingleton<INavigationService, NavigationService>();
+
+            Container.RegisterSingleton<INavigationService, NavigationService>();
             Container.RegisterSingleton<IMessenger, Messenger>();
             Container.RegisterSingleton<IDataService, DataService>();
-        Container.RegisterSingleton<TrendyolDbContext>();
+            Container.RegisterSingleton<TrendyolDbContext>();
 
 
         Container.Verify();
