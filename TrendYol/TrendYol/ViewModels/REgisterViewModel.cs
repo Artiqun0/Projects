@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using TrendYol.Context;
 using TrendYol.Models;
+using TrendYol.Services.Classes;
 using TrendYol.Services.Interfaces;
 using TrendYol.Views;
 
@@ -19,7 +20,7 @@ namespace TrendYol.ViewModels;
     private readonly INavigationService navigationService;
     private readonly TrendyolDbContext _context;
     private readonly IDataService _dataService;
-
+    private readonly UserService _userService;
 
 
 
@@ -95,6 +96,7 @@ namespace TrendYol.ViewModels;
         navigationService = navigation;
         _context = context;
         _dataService = dataService;
+        _userService = new UserService(_context);
     }
 
     public RelayCommand BackToLogin
@@ -114,40 +116,39 @@ namespace TrendYol.ViewModels;
     {
         get => new(() =>
         {
-            var res = ValidateUserData(TextBox1, TextBox2, TextBox3, TextBox4, TextBox5);
-
-            if (res == true)
+            try
             {
-                User newUser = new User
+                if (_context.User.Any(u => u.Username == TextBox1 || u.Email == TextBox2))
                 {
-                    Username = TextBox1,
-                    Password = BCrypt.Net.BCrypt.HashPassword(TextBox3),
-                    Email = TextBox2,
-                    SecretWord = TextBox5,
-                    Balance = 0,
-                    Position = "User"
-                };
-
-                _context.User.Add(newUser);
-                _context.SaveChanges();
-
-                MessageBox.Show("Registration completed successfully!");
-
-                User CurentUser = _context.User.Single(u => u.Email == TextBox2);
-                _dataService.SendData(CurentUser);
+                    MessageBox.Show("This user is already exist");
+                    return;
+                }
+                else if (TextBox4 != TextBox3)
+                {
+                    MessageBox.Show("Passwords aren't same");
+                    return;
+                }
+                else
+                {
+                    var newuser = _userService.RegisterUser(TextBox1, TextBox2, TextBox3, TextBox5);
+                    _context.User.Add(newuser);
+                    _context.SaveChanges();
+                    MessageBox.Show("Suceestful register");
+                    TextBox1 = "";
+                    TextBox2 = "";
+                    TextBox3 = "";
+                    TextBox5 = "";
+                    navigationService.NavigateTo<LoginViewModel>();
+                }
                 
-                HomePageView newWindow = new HomePageView();
-                newWindow.DataContext = App.Container.GetInstance<AccountViewModel>();
-
-                App.window.Close();
-
-                newWindow.ShowDialog();
+                
+                
+               
             }
-            else
-                return;
-
-
-
+            catch (Exception ex)
+            {
+                MessageBox.Show($"{ex.Message}");
+            }
         });
     }
 

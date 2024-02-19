@@ -11,7 +11,7 @@ using TrendYol.Models;
 namespace TrendYol.ViewModels;
     public class OrdersViewModel : ViewModelBase
     {
-    public ObservableCollection<Orders> Orders { get; set; }
+    public ObservableCollection<Order> Orders { get; set; }
 
     public OrdersViewModel()
     {
@@ -20,7 +20,7 @@ namespace TrendYol.ViewModels;
 
     private void LoadOrders()
     {
-        Orders = new ObservableCollection<Orders>();
+        Orders = new ObservableCollection<Order>();
 
         using (var context = new TrendyolDbContext())
         {

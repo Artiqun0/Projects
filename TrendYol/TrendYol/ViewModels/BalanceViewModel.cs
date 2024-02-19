@@ -10,13 +10,24 @@ using System.Windows;
 using TrendYol.Context;
 using TrendYol.Message;
 using TrendYol.Models;
+using TrendYol.Services.Classes;
+using TrendYol.Services.Interfaces;
 
 namespace TrendYol.ViewModels;
     public class BalanceViewModel : ViewModelBase
     {
-    TrendyolDbContext _trendyoulDB = new TrendyolDbContext();
+    private readonly TrendyolDbContext _trendyoulDB;
+    private readonly CurrentUserService _currentUserService;
     private readonly IMessenger _messenger;
+    private readonly INavigationService _navigation;
     public User _currentUser = new();
+    private double _balance;
+
+    public double Balance
+    {
+        get { return _balance; }
+        set { _balance = value; }
+    }
     public User CurentUser
     {
         get => _currentUser;
@@ -40,9 +51,16 @@ namespace TrendYol.ViewModels;
             }
         }
     }
-    public BalanceViewModel(IMessenger messenger)
+    public BalanceViewModel(INavigationService navigation ,IMessenger messenger, TrendyolDbContext context, CurrentUserService currentUserService)
     {
         _messenger = messenger;
+        _trendyoulDB = context;
+        _currentUserService = currentUserService;
+        _currentUserService.PropertyChanged += (sender, args) =>
+        {
+             Balance = _currentUserService.Balance;
+        };
+        _currentUserService.UpdateUserData(_currentUser);
         _messenger.Register<DataMessage>(this, message =>
         {
             if (message.Data as User != null)
@@ -63,15 +81,19 @@ namespace TrendYol.ViewModels;
         {
             if (float.TryParse(AddToBalanceTextBox, out float amountToAdd))
             {
-                CurentUser.Balance += amountToAdd;
+                _currentUserService.Balance += amountToAdd;
 
 
-                var user = _trendyoulDB.User.FirstOrDefault(u => u.Username == _currentUser.Username);
+                var user = _trendyoulDB.User.FirstOrDefault(u => u.Username == _currentUserService.Login);
                 if (user != null)
                 {
-                    user.Balance = _currentUser.Balance;
+                    user.Balance = _currentUserService.Balance;
                     _trendyoulDB.SaveChanges();
+                    MessageBox.Show("Successful Pay!");
+                    _navigation.NavigateTo<ShopViewModel>();
+                    TextBox1 = string.Empty;
                 }
+                
                 RaisePropertyChanged(nameof(BalanceInfo));
             }
             else

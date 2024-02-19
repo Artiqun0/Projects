@@ -31,7 +31,8 @@
                             <Setter Property="BorderBrush" Value="Transparent"/>
                             <Setter Property="Template">
                                 <Setter.Value>
-                                    <ControlTemplate TargetType="Button"><ContentPresenter/>
+                                    <ControlTemplate TargetType="Button">
+                                        <ContentPresenter/>
                                     </ControlTemplate>
                                 </Setter.Value>
                             </Setter>
@@ -74,6 +75,16 @@
                 </Button>
             </Grid>
 
+            <Grid Grid.Row="5">
+                <Button
+                    
+                    BorderBrush="Transparent" BorderThickness="0" Background="Red" Command="{Binding Quit}">
+                    <StackPanel Orientation="Horizontal">
+                        <md:PackIcon Kind="ExitToApp" Foreground="#fff" Height="27" Width="36"/>
+                        <TextBlock Text="Quit" Foreground="#fff" FontSize="20"/>
+                    </StackPanel>
+                </Button>
+            </Grid>
 
 
         </Grid>

@@ -6,7 +6,7 @@
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:TrendYol"
              mc:Ignorable="d" 
-             xmlns:ViewModels="clr-namespace:TrendYol.ViewModels"
+             xmlns:ViewModels="clr-namespace:TrendYol.ViewModels" d:DataContext="{d:DesignInstance Type=ViewModels:LoginViewModel}"
              Background="#a3bb5c"
              
              d:DesignHeight="550" d:DesignWidth="400">

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using TrendYol.Context;
 using TrendYol.Models;
+using TrendYol.Services.Classes;
 using TrendYol.Services.Interfaces;
 using TrendYol.Views;
 
@@ -18,8 +19,11 @@ namespace TrendYol.ViewModels;
     private readonly INavigationService navigationService;
     private readonly IDataService _dataService;
     private readonly IMessenger _messenger;
-
-    TrendyolDbContext _trendyoulDB = new TrendyolDbContext();
+    private readonly TrendyolDbContext _trendyoulDB;
+    private readonly SuperAdminService _superAdminService;
+    private readonly UserService _userService;
+    private readonly CurrentUserService _currentUserService;
+    
 
     private string usernameTextBox;
     private string passwordTextBox;
@@ -48,12 +52,15 @@ namespace TrendYol.ViewModels;
             }
         }
     }
-    public LoginViewModel(IMessenger messenger, IDataService dataService, INavigationService navigation)
+    public LoginViewModel(IMessenger messenger, IDataService dataService, INavigationService navigation, TrendyolDbContext trendyoulDB, CurrentUserService currentUserService)
     {
         navigationService = navigation;
         _dataService = dataService;
         _messenger = messenger;
-        
+        _trendyoulDB = trendyoulDB;
+        _superAdminService = new SuperAdminService(_trendyoulDB);
+        _userService = new UserService(_trendyoulDB);
+        _currentUserService = currentUserService;
     }
     public RelayCommand DoRegistration
     {
@@ -67,36 +74,38 @@ namespace TrendYol.ViewModels;
     {
         get => new(() =>
         {
-            var user = _trendyoulDB.User.FirstOrDefault(u => u.Username == TextBox1);
-            _dataService.SendData(user);
 
-            if (user != null)
+            try
             {
-                if (BCrypt.Net.BCrypt.Verify(TextBox2, user.Password))
+                if (_superAdminService.SuperAdminLogin(TextBox1, TextBox2))
                 {
-
-                    //_currentUser.Username = user.Username;
-                    //_currentUser.Email = user.Email;
-                    //_currentUser.Balance = user.Balance;
-                    //_currentUser.Position = user.Position;
-
-                    HomePageView newWindow = new HomePageView();
-                    newWindow.DataContext = App.Container.GetInstance<HomePageViewModel>();
-                    navigationService.NavigateTo<ShopViewModel>();
-
+                    SuperAdminWindow newWindow = new SuperAdminWindow();
+                    newWindow.DataContext = App.Container.GetInstance<SuperAdminViewModel>();
+                    navigationService.NavigateTo<SuperAdminViewModel>();
                     App.window.Close();
 
                     newWindow.ShowDialog();
                 }
-
-
+                else if (_userService.UserLogin(TextBox1, TextBox2))
+                {
+                    var user = _userService.LoginGet(TextBox1);
+                    _currentUserService.UpdateUserData(user);
+                    HomePageView newWindow = new HomePageView();
+                    newWindow.DataContext = App.Container.GetInstance<HomePageViewModel>();
+                    navigationService.NavigateTo<ShopViewModel>();
+                    App.window.Close(); 
+                    newWindow.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Wrong password");
+                    return;
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("User not found.");
+                MessageBox.Show($"{ex.Message}");
             }
-
-
 
         });
     }

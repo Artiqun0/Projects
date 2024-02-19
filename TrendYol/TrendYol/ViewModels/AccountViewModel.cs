@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TrendYol.Message;
 using TrendYol.Models;
+using TrendYol.Services.Classes;
 using TrendYol.Services.Interfaces;
 
 namespace TrendYol.ViewModels;
@@ -15,6 +16,23 @@ public class AccountViewModel : ViewModelBase
     private readonly INavigationService navigationService;
     private readonly IDataService _dataService;
     private readonly IMessenger _messenger;
+    private readonly CurrentUserService _currentUserService;
+    private readonly User user = new();
+
+    private string _username;
+    private string _email;
+
+    public string Username
+    {
+        get { return _username; }
+        set { _username = value; }
+    }
+
+    public string Email
+    {
+        get { return _email; }
+        set { _email = value; }
+    }
     public User _currentUser = new();
     public User CurentUser
     {
@@ -25,11 +43,25 @@ public class AccountViewModel : ViewModelBase
         }
     }
 
-    public AccountViewModel(IMessenger messenger, IDataService dataService, INavigationService navigation)
+    public AccountViewModel(IMessenger messenger, IDataService dataService, INavigationService navigation, CurrentUserService currentUserService)
     {
         navigationService = navigation;
         _dataService = dataService;
         _messenger = messenger;
+        _currentUserService = currentUserService;
+        _currentUserService.PropertyChanged += (sender, args) =>
+        {
+            if (args.PropertyName == nameof(CurrentUserService.Email))
+            {
+                Email = _currentUserService.Email;
+            }
+            else if (args.PropertyName == nameof(CurrentUserService.Login))
+            {
+                Username = _currentUserService.Login;
+            }
+        };
+
+        _currentUserService.UpdateUserData(user);
 
         _messenger.Register<DataMessage>(this, message =>
         {

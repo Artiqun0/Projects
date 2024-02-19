@@ -13,20 +13,20 @@
             
             <StackPanel Orientation="Horizontal" Margin="0 70">
                 <TextBlock Text="User Name: " FontSize="40" Margin="30 10" Foreground="#090909"/>
-                <TextBlock x:Name="UserNameField" Background="#ebebea" Foreground="#090909" Width="500" Text="{Binding CurentUser.Username}" FontSize="30" HorizontalAlignment="Right" Margin="16 10"/>
+                <TextBlock x:Name="UserNameField" Background="#ebebea" Foreground="#090909" Width="500" Text="{Binding Username}" FontSize="30" HorizontalAlignment="Right" Margin="16 10"/>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0 70">
                 
                 <TextBlock Text="E-mail: " FontSize="40" Margin="30 10" Foreground="#090909"/>
-                <TextBlock x:Name="emailField" Background="#ebebea" Text="{Binding CurentUser.Email}" Width="500" FontSize="30" Foreground="#090909" HorizontalAlignment="Right" Margin="100 10"/>
+                <TextBlock x:Name="emailField" Background="#ebebea" Text="{Binding Email}" Width="500" FontSize="30" Foreground="#090909" HorizontalAlignment="Right" Margin="100 10"/>
                 
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0 70">
                 
                 <TextBlock Text="Status: " FontSize="40" Margin="30 10" Foreground="#090909"/>
-                <TextBlock x:Name="StatusField" Background="#ebebea" Text="{Binding CurentUser.Position}" Width="500" FontSize="30" HorizontalAlignment="Right" Foreground="#090909" Margin="100 10"/>
+                <TextBlock x:Name="StatusField" Background="#ebebea" Text="{Binding Position}" Width="500" FontSize="30" HorizontalAlignment="Right" Foreground="#090909" Margin="100 10"/>
                 
             </StackPanel>
             

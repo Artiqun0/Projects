@@ -4,34 +4,217 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrendYol.Views"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="SuperAdminWindow" Height="550" Width="800">
+        Background="#a3bb5c"
+        Title="SuperAdminWindow" Height="768" Width="1366">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80"></RowDefinition>
-            <RowDefinition></RowDefinition>
-        </Grid.RowDefinitions>
+        <Button
+            Command="{Binding CreateUser}"
+            Content="Create User" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 100"
+            Background="#ebebea" BorderBrush="#090909" Foreground="#090909"
+            Width="360" Height="40"
+                        FontSize="20"
+            materialDesign:ButtonAssist.CornerRadius="12"/>
+        <Button
+         Command="{Binding CreateAdmin}"
+         Content="Create Admin" HorizontalAlignment="Left" VerticalAlignment="Top"
+            Background="#ebebea" BorderBrush="#090909" Foreground="#090909"
+         Width="310" Height="40"
+         Margin="375 100 0 0"
+         FontSize="16"
+            materialDesign:ButtonAssist.CornerRadius="12"/>
+        <Button
+            Command="{Binding DeleteUser}"
+        Content="Delete USer" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="690 100 0 0"
+            Background="#ebebea" BorderBrush="#090909" Foreground="#090909" Width="310"
+         Height="40"
+        
+        FontSize="16"
+            materialDesign:ButtonAssist.CornerRadius="12"/>
+        <Button
+        Command="{Binding DeleteAdmin}"
+            HorizontalAlignment="Right" VerticalAlignment="Top"
+            Background="#ebebea" BorderBrush="#090909" Foreground="#090909"
+        Content="Delete Admin"
+        Width="360" Height="40"
+        Margin="0 100 5 0"
+        FontSize="16"
+            materialDesign:ButtonAssist.CornerRadius="12"/>
+        <ScrollViewer Margin="10,216,841,87">
+            <ListBox Grid.Row="1"
+         ItemsSource="{Binding User}"
+         FontSize="17"
+         FontWeight="Bold"
+         Height="465" Width="490">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <StackPanel 
+                    Grid.Row="1">
+                                <Label Content="User ID: "/>
+                                <Label Content="Name: "/>
+                                <Label Content="Email: "/>
+                            </StackPanel>
+                            <StackPanel
+                    Grid.Row="1">
+                                <Label Content="{Binding UserId}"/>
+                                <Label Content="{Binding Name}"/>
+                                <Label Content="{Binding Email}"/>
+                            </StackPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+        <ScrollViewer Margin="802,215,0,87">
+            <ListBox Grid.Row="1"
+     ItemsSource="{Binding Order, UpdateSourceTrigger=PropertyChanged}"
+     SelectedItem="{Binding SelectedOrder, UpdateSourceTrigger=PropertyChanged}"
+     SelectionMode="Single"
+     FontSize="17"
+     FontWeight="Bold"
+     Height="466" Width="489">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <StackPanel 
+                Grid.Row="1">
+                                <Label Content="Name: "/>
+                                <Label Content="Email: "/>
+                                <Label Content="Product ID: "/>
+                                <Label Content="Product Name: "/>
+                                <Label Content="Order Date: "/>
+                                <Label Content="Status: "/>
+                            </StackPanel>
+                            <StackPanel
+                Grid.Row="1">
+                                <Label Content="{Binding Users.Name}"/>
+                                <Label Content="{Binding Users.Email}"/>
+                                <Label Content="{Binding ProductId}"/>
+                                <Label Content="{Binding Product}"/>
+                                <Label Content="{Binding Created}"/>
+                                <Label Content="{Binding Status}"/>
 
-        <Grid Grid.Row="0">
 
-            <TextBlock Text="SuperAdmin Panel"
-                HorizontalAlignment="Center"
-                FontSize="30"
-                Margin="10"/>
+                            </StackPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+        <ScrollViewer Margin="496,215,539,51">
+            <ListBox Grid.Row="1"
+             ItemsSource="{Binding Admin, UpdateSourceTrigger=PropertyChanged}"
+             SelectedItem="{Binding SelectedAdmin, UpdateSourceTrigger=PropertyChanged}"
+             SelectionMode="Single"
+             FontSize="17"
+             FontWeight="Bold"
+             Height="502" Width="289">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <StackPanel 
+                        Grid.Row="1">
+                                <Label Content="ID Админа: "/>
+                                <Label Content="Логин: "/>
+                            </StackPanel>
+                            <StackPanel
+                        Grid.Row="1">
+                                <Label Content="{Binding AdminId}"/>
+                                <Label Content="{Binding Name}"/>
+                            </StackPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
 
-        </Grid>
+        <Button
+    
+    Command="{Binding Exit}"
+    Background="Red"
+    HorizontalAlignment="Right" VerticalAlignment="Bottom"
+    Margin="1216,694,23,10"
+            materialDesign:ButtonAssist.CornerRadius="12">
+            <materialDesign:PackIcon
+        Kind="ExitToApp" Height="30" Width="73"/>
+        </Button>
+        <TextBlock
+    Text="Super Admin Panel"
+    FontWeight="Bold"
+    FontSize="80" HorizontalAlignment="Center" VerticalAlignment="Top"
+    Foreground="#090909"/>
+        <TextBlock
+            Text="Users: "
+            FontSize="30"
+            FontWeight="Bold"
+            Foreground="#090909" Margin="197,156,809,554"/>
 
+        <TextBlock
+            Text="Orders: "
+            FontSize="30"
+            FontWeight="Bold"
+            Foreground="#090909" Margin="1032,156,80,554"/>
+        <TextBlock
+            Text="Admins: "
+            FontSize="30"
+            FontWeight="Bold"
+            Foreground="#090909" Margin="604,156,502,554"/>
+        <RadioButton
+            Background="#ebebea"
+            Style="{StaticResource MaterialDesignChoiceChipAccentRadioButton}"
+            Width="150"
+            BorderBrush="#090909"
 
+    Command="{Binding Check}"
+    IsChecked="{Binding RadioButton.OrderPlaced}"
+    Content="Ready for sending"
+    FontSize="18"
+    
+    Margin="62,702,0,18"/>
 
-        <Grid Grid.Row="1">
-            <Border Margin="30,20,30,20">
+        <RadioButton
+            Background="#ebebea"
+            Foreground="#090909"
+            BorderBrush="#090909"
+    Style="{StaticResource MaterialDesignChoiceChipAccentRadioButton}"
+    Command="{Binding Check}"
+    IsChecked="{Binding RadioButton.ArrivedAtTheWarehouse}"
+    Content="In the stock"
+    
 
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <WrapPanel x:Name="WrapPanel">
+FontSize="18"
+Margin="252,702,0,18"/>
 
-                    </WrapPanel>
-                </ScrollViewer>
-            </Border>
-        </Grid>
+        <RadioButton
+            Background="#ebebea"
+            Style="{StaticResource MaterialDesignChoiceChipAccentRadioButton}"
+    Command="{Binding Check}"
+    IsChecked="{Binding RadioButton.Sent}"
+    
+Content="Sended"
+FontSize="18"
+Margin="411,702,0,18"/>
+
+        <RadioButton
+            Background="#ebebea"
+            Style="{StaticResource MaterialDesignChoiceChipAccentRadioButton}"
+    Command="{Binding Check}"
+    IsChecked="{Binding RadioButton.SmartCustomsCheck}"
+    
+Content="At customs check"
+FontSize="18"
+Margin="532,702,0,18"/>
+
+        <RadioButton
+            Background="#ebebea"
+            Style="{StaticResource MaterialDesignChoiceChipAccentRadioButton}"
+    Command="{Binding Check}"
+    IsChecked="{Binding RadioButton.InFilial}"
+    
+ Content="In the post office"
+ FontSize="18"
+ Margin="781,702,0,18"/>
     </Grid>
 </Window>

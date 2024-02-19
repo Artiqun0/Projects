@@ -39,6 +39,10 @@
                 <Views:OrdersView/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type ViewModels:SuperAdminViewModel}">
+                <Views:SuperAdminWindow/>
+            </DataTemplate>
+
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

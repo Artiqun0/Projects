@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using TrendYol.Messages;
 using TrendYol.Services.Interfaces;
 using System.Windows;
+using TrendYol.Views;
+using MaterialDesignThemes.Wpf;
 
 namespace TrendYol.ViewModels;
 public class HomePageViewModel : ViewModelBase
@@ -62,6 +64,21 @@ public class HomePageViewModel : ViewModelBase
         {
             navigationService.NavigateTo<ShopViewModel>();
         });
+    }
+
+    public RelayCommand Quit
+    {
+        get => new(
+            () =>
+            {
+
+                //LoginView newWindow = new LoginView();
+                //newWindow.DataContext = App.Container.GetInstance<LoginView>();
+                //navigationService.NavigateTo<ShopViewModel>();
+                //App.window.Close();
+                //newWindow.ShowDialog();
+
+            });
     }
 }
 

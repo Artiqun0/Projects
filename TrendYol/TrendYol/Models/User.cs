@@ -9,7 +9,7 @@ namespace TrendYol.Models;
 public class User
 {
     [Key]
-    public int Id { get; set; }
+    public int UserId { get; set; }
     [Required]
     public string Username { get; set; }
     [Required]
@@ -19,9 +19,9 @@ public class User
     [Required]
     public string SecretWord { get; set; }
     [Required]
-    public float Balance { get; set; } = 0;
-    [Required]
-    public string Position { get; set; }
+    public double Balance { get; set; }
+    public ICollection<Order> Orders { get; set; }
+    public ICollection<Product> Products { get; set; }
 
 
 }
