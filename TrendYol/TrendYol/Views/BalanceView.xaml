@@ -19,7 +19,9 @@
             <TextBlock Text="Current balance:" Foreground="#090909" FontSize="70" Width="520" Margin=" 0, 80, 0, 0" HorizontalAlignment="Left" />
             <TextBlock Text="{Binding Balance}" FontSize="70" Width="354" TextAlignment="Center" Foreground="#090909" Margin="0,80,46,50" HorizontalAlignment="Right"/>
         </Grid>
-
+        <Button HorizontalAlignment="Left" Foreground="#090909"  VerticalAlignment="Top" Width="85" Height="52" Margin="10,10,0,0" BorderThickness="0" Background="Transparent" Command="{Binding Back}">
+            <md:PackIcon HorizontalAlignment="Center" Height="46" Width="104" Foreground="#ebebea" Kind="ArrowBack"></md:PackIcon>
+        </Button>
 
         <Grid Grid.Row="1">
             <TextBox BorderBrush="#ebebea" x:Name="AddToBalanceTextBox" FontSize="50" TextAlignment="Left" Text="{Binding TextBox1}" BorderThickness="0,0,0,3" Margin="0 0 0 115" Width="500" HorizontalAlignment="Left"/>

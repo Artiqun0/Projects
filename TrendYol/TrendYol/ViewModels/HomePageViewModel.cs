@@ -58,7 +58,7 @@ public class HomePageViewModel : ViewModelBase
         });
     }
 
-    public RelayCommand GoToShop
+    public RelayCommand Shop
     {
         get => new(() =>
         {
@@ -71,15 +71,12 @@ public class HomePageViewModel : ViewModelBase
         get => new(
             () =>
             {
-
-                //LoginView newWindow = new LoginView();
-                //newWindow.DataContext = App.Container.GetInstance<LoginView>();
-                //navigationService.NavigateTo<ShopViewModel>();
-                //App.window.Close();
-                //newWindow.ShowDialog();
+                navigationService.NavigateTo<LoginViewModel>();
 
             });
     }
+
+
 }
 
 

@@ -23,7 +23,6 @@ namespace TrendYol.Views
         public OrdersView()
         {
             InitializeComponent();
-            //DataContext = new OrdersViewModel();
         }
     }
 }

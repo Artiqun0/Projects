@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrendYol"
         mc:Ignorable="d"
-        Title="MainWindow" Height="550" Width="400"
-        WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="MainWindow" Height="768" Width="1366"
+        >
     <Grid>
         <ContentControl  Grid.Row="0" Content="{Binding CurrentView, UpdateSourceTrigger=PropertyChanged}"/>
-
+        
     </Grid>
 </Window>

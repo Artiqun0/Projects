@@ -3,16 +3,55 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:TrendYol.Views"
+             xmlns:local="clr-namespace:TrendYol.Views" xmlns:viewmodels="clr-namespace:TrendYol.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ShopViewModel}"
              mc:Ignorable="d" 
+             Background="#a3bb5c"
              d:DesignHeight="780" d:DesignWidth="920">
     <Grid>
-        <Grid>
-            <ScrollViewer VerticalScrollBarVisibility="Auto">
-                <WrapPanel x:Name="WrapPanel">
+        <TextBlock Text="Make order"  FontSize="30" FontWeight="Bold" HorizontalAlignment="Center" Margin="0,20,0,710" Width="188" Foreground="Black"/>
 
-                </WrapPanel>
-            </ScrollViewer>
-        </Grid>
+        <Button
+        Command="{Binding Add}"
+        Content="Add" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="345,0,0,62" Width="220" Height="40" Background="#a3bb5c" BorderBrush="#CDCDC0" BorderThickness="2" Foreground="White"/>
+        <ScrollViewer Margin="0,53,2,139">
+            <ListBox Grid.Row="1"
+        ItemsSource="{Binding Product}"
+        SelectedItem="{Binding SelectedProduct}"
+        SelectionMode="Single"
+        FontSize="17"
+        FontWeight="Bold"
+                      Margin="0,0,390,0"
+        Height="580" Width="899">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <StackPanel 
+              Grid.Row="1">
+                                <Label Content="ID: "/>
+                                <Label Content="Name: "/>
+                                <Label Content="Description: "/>
+                                <Label Content="Count: "/>
+                                <Label Content="Photo: "/>
+
+                            </StackPanel>
+                            <StackPanel
+                     Grid.Row="1">
+                                <Label Content="{Binding Id}"/>
+                                <Label Content="{Binding Name}"/>
+                                <Label Content="{Binding Description}"/>
+                                <Label Content="{Binding Count}"/>
+                                <Image
+                                 Width="100"
+                                 Height="100"
+                                 Source="{Binding Image}"/> 
+                            </StackPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </ScrollViewer>
+        <Button
+        Command="{Binding Exit}"
+        Content="Exit" Background="red" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Width="100" Height="40" BorderBrush="Transparent" BorderThickness="2" Foreground="Black"/>
     </Grid>
 </UserControl>

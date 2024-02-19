@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using TrendYol.Context;
+using TrendYol.Services.Classes;
 using TrendYol.Services.Interfaces;
 
 namespace TrendYol.ViewModels;
@@ -16,6 +17,7 @@ namespace TrendYol.ViewModels;
     private readonly INavigationService navigationService;
     private readonly IDataService _dataService;
     private readonly IMessenger _messenger;
+    private readonly ForgotPasswordService _firmPasswordService;
 
     TrendyolDbContext _trendyoulDb = new TrendyolDbContext();
 
@@ -79,6 +81,7 @@ namespace TrendYol.ViewModels;
         navigationService = navigation;
         _dataService = dataService;
         _messenger = messenger;
+        _firmPasswordService = new ForgotPasswordService(_trendyoulDb);
 
 
 
@@ -98,15 +101,34 @@ namespace TrendYol.ViewModels;
     {
         get => new(() =>
         {
-            var user = _trendyoulDb.User.FirstOrDefault(u => u.Username == TextBox1 && u.SecretWord == TextBox2);
-
-            if (user != null && System.Text.RegularExpressions.Regex.IsMatch(TextBox3, passwordRegex) && TextBox3 == TextBox4)
+            try
             {
-                BCrypt.Net.BCrypt.HashPassword(TextBox3);
-                _trendyoulDb.SaveChanges();
-
-                MessageBox.Show("The password was successfully changed!");
-                navigationService.NavigateTo<LoginViewModel>();
+                if (!_trendyoulDb.User.Any(u => u.Username == TextBox1 && u.Email == TextBox2))
+                {
+                    MessageBox.Show("User not found");
+                    return;
+                }
+                else if (TextBox4 != TextBox3)
+                {
+                    MessageBox.Show("Password mismatch!");
+                    TextBox4 = "";
+                    TextBox3 = "";
+                    return;
+                }
+                else
+                {
+                    _firmPasswordService.ForgotPassword(TextBox1, TextBox2, TextBox3);
+                    _trendyoulDb.SaveChanges();
+                    MessageBox.Show("Password upgrated succestful");
+                    TextBox1 = "";
+                    TextBox2 = "";
+                    TextBox3 = "";
+                    navigationService.NavigateTo<LoginViewModel>();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         });
     }

@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="TrendYol.Views.CreateUserView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TrendYol.Views" xmlns:viewmodels="clr-namespace:TrendYol.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:CreateUserViewModel}"
+             Background="#a3bb5c"
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1366">
+    <Grid>
+
+        <Button
+Command="{Binding Back}"
+Content="Back"  Background="Red" Foreground="Black" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20" Width="150" Height="60" />
+        <TextBlock  Text="Add user" FontSize="70" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+
+        <TextBlock Text="Name" Width="150" Height="40" FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120"/>
+        <TextBox 
+        Text="{Binding Name}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="600" Margin="280 120"
+         Name="txtName" Background="#ebebea" />
+
+        <TextBlock Text="Secret" Width="150" Height="40" FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120 200" />
+        <TextBox
+        Text="{Binding Secret}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="600" Margin="280 200"
+         Name="txtSurname" Background="#ebebea" />
+
+        <TextBlock Text="Login" Width="150" Height="40" FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120 280"/>
+        <TextBox
+        Text="{Binding Login}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="600" Margin="280 280"
+         Name="txtLogin" Background="#ebebea"  />
+
+        <TextBlock Text="Password" Width="150" Height="40" FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120 360"/>
+        <TextBox
+        Text="{Binding Password}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="600" Margin="280 360"
+         Name="txtPssword" Background="#ebebea" />
+
+        <TextBlock Text="Confirm"  Width="150" Height="40" FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120 440 0 0" />
+        <TextBox
+        Text="{Binding TryPassword}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="600" Margin="280 440 0 0"
+         x:Name="Email" Background="#ebebea" />
+
+        <TextBlock  Text="Email"  Width="150" Height="40" FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120 520 0 0"/>
+        <TextBox
+        Text="{Binding Email}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="600" Margin="280 520 0 0"
+         x:Name="txtLogin_Копировать" Background="#ebebea"  />
+        <Button
+        Command="{Binding Add}" HorizontalAlignment="Center" VerticalAlignment="Top" Width="360" Height="40" Foreground="Black" FontSize="24" Margin="0,600,0,0"
+          Content="Add" Background="#ebebea" />
+    </Grid>
+</UserControl>

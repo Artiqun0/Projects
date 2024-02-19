@@ -10,17 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using TrendYol.ViewModels;
 
 namespace TrendYol.Views
 {
     /// <summary>
-    /// Interaction logic for HomePage.xaml
+    /// Логика взаимодействия для CreateAdminView.xaml
     /// </summary>
-    public partial class HomePageView : UserControl
+    public partial class CreateAdminView : UserControl
     {
-        public HomePageView()
+        public CreateAdminView()
         {
             InitializeComponent();
         }

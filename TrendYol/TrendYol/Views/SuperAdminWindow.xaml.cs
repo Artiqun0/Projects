@@ -19,45 +19,17 @@ namespace TrendYol.Views;
     /// <summary>
     /// Interaction logic for SuperAdminWindow.xaml
     /// </summary>
-    public partial class SuperAdminWindow : Window
-    {
-    public RelayCommand<User> MakeAdminCommand { get; private set; }
+    public partial class SuperAdminWindow : UserControl
+{
 
-    public SuperAdminWindow()
-    {
-        InitializeComponent();
-        
-
-
-    }
-    private void MakeAdmin(User user)
-    {
-        using (var context = new TrendyolDbContext())
+        public SuperAdminWindow()
         {
-            var userToUpdate = context.User.FirstOrDefault(u => u.UserId == user.UserId);
-
-            if (userToUpdate != null)
-            {
-                //userToUpdate.Position = "Admin";
-
-                context.SaveChanges();
-                MessageBox.Show("The position has been successfully changed");
-
-            }
-            else
-            {
-                MessageBox.Show("User not found.");
-            }
+            InitializeComponent();
         }
-    }
 
-    private void LoadUsers()
+    private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
     {
-        List<User> users;
-        using (var context = new TrendyolDbContext())
-        {
-            users = context.User.ToList();
-        }
+
     }
 }
 

@@ -4,10 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TrendYol.Views"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              Background="#a3bb5c"
              mc:Ignorable="d" 
              d:DesignHeight="780" d:DesignWidth="920">
     <Grid>
+        <Button HorizontalAlignment="Left" Foreground="#090909"  VerticalAlignment="Top" Width="85" Height="52" Margin="10,10,0,0" BorderThickness="0" Background="Transparent" Command="{Binding Back}">
+            <md:PackIcon HorizontalAlignment="Center" Height="46" Width="104" Foreground="#ebebea" Kind="ArrowBack"></md:PackIcon>
+        </Button>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Your Account" HorizontalAlignment="Center" FontSize="70" Foreground="#090909" Margin="40"/>
             
@@ -23,13 +27,8 @@
                 
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" Margin="0 70">
-                
-                <TextBlock Text="Status: " FontSize="40" Margin="30 10" Foreground="#090909"/>
-                <TextBlock x:Name="StatusField" Background="#ebebea" Text="{Binding Position}" Width="500" FontSize="30" HorizontalAlignment="Right" Foreground="#090909" Margin="100 10"/>
-                
-            </StackPanel>
-            
+            <StackPanel Orientation="Horizontal" Margin="0 70"/>
+
         </StackPanel>
     </Grid>
 </UserControl>

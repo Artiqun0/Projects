@@ -27,6 +27,11 @@ namespace TrendYol;
             Container.RegisterSingleton<ShopViewModel>();
             Container.RegisterSingleton<OrdersViewModel>();
             Container.RegisterSingleton<SuperAdminViewModel>();
+            Container.RegisterSingleton<AdminViewModel>();
+            Container.RegisterSingleton<CreateUserViewModel>();
+            Container.RegisterSingleton<CreateAdminViewModel>();
+            Container.RegisterSingleton<AddProductViewModel>();
+            Container.RegisterSingleton<CountViewModel>();
 
 
             Container.RegisterSingleton<INavigationService, NavigationService>();

@@ -177,43 +177,6 @@ namespace TrendYol.ViewModels;
             }
         }
 
-        if (string.IsNullOrWhiteSpace(t1) || !Regex.IsMatch(t1, usernameRegex))
-        {
-            MessageBox.Show("The username entered is incorrect! Length from 3 to 16 characters.\r\nCan only contain letters of the Latin alphabet (in any case), numbers and underscores.\r\nMust not begin with a number or underscore.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            return false;
-        }
-
-        if (string.IsNullOrWhiteSpace(t2) || !Regex.IsMatch(t2, emailRegex))
-        {
-            MessageBox.Show("The email was entered incorrectly. Please re-enter.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            return false;
-        }
-
-        if (string.IsNullOrWhiteSpace(t3) || !Regex.IsMatch(t3, passwordRegex))
-        {
-            MessageBox.Show("The password entered is incorrect! Length from 8 to 20 characters.\r\nMust contain at least one uppercase and lowercase letter.\r\nMust contain at least one digit.\r\nSpecial characters are allowed.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            return false;
-        }
-
-        if (string.IsNullOrWhiteSpace(t4) || !Regex.IsMatch(t3, passwordRegex))
-        {
-            MessageBox.Show("The password entered is incorrect! Length from 8 to 20 characters.\r\nMust contain at least one uppercase and lowercase letter.\r\nMust contain at least one digit.\r\nSpecial characters are allowed.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            return false;
-        }
-
-        if (t3 != t4)
-        {
-            MessageBox.Show("Password and confirm password must match.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            return false;
-        }
-
-        if (string.IsNullOrWhiteSpace(t5) || !Regex.IsMatch(t5, secretWordRegex))
-        {
-            MessageBox.Show("The secret word was entered incorrectly! Length from 5 to 20 characters.\r\nMay contain letters of the Latin alphabet (in any case), numbers and spaces.\r\nMust not start or end with a space.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
-            return false;
-        }
-
-
         return true;
     }
 }

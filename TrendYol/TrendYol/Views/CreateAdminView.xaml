@@ -1,0 +1,35 @@
+﻿<UserControl x:Class="TrendYol.Views.CreateAdminView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TrendYol.Views" xmlns:viewmodels="clr-namespace:TrendYol.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:CreateAdminViewModel}"
+             mc:Ignorable="d" 
+             Background="#a3bb5c"
+             d:DesignHeight="768" d:DesignWidth="1366">
+    <Grid>
+        <TextBlock Text="Admin creating" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="70" FontWeight="Bold"/>
+        <Button
+        Command="{Binding Back}"
+        Content="Back"  Background="Red" FontSize="20"  Foreground="Black" Margin="20 " HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Height="50"/>
+
+        <TextBlock Text="Login" HorizontalAlignment="Center" VerticalAlignment="Top" Width="100" FontSize="30" Height="40" Margin="-270 150 0 0" />
+        <TextBox
+        Text="{Binding Login}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Margin="150 150 0 0"
+          Name="txtLogin" Background="#ebebea"  Width="300" />
+
+        <TextBlock Text="Password" HorizontalAlignment="Center" VerticalAlignment="Top" Width="200" FontSize="30" Height="40" Margin="-270 220 0 0" />
+        <TextBox
+         Text="{Binding Password}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Margin="150 220 0 0"
+         Name="txtPssword" Background="#ebebea" Width="300"   />
+
+        <TextBlock  Text="Confirm password" HorizontalAlignment="Center" VerticalAlignment="Top" Width="300" FontSize="30" Height="40" Margin="-400 290 0 0" />
+        <TextBox
+        Text="{Binding TryPassword}" HorizontalAlignment="Center" VerticalAlignment="Top" Height="40" Margin="150 290 0 0"
+         x:Name="txtPssword_Копировать" Background="#ebebea"  Width="300"  />
+
+        <Button
+        Command="{Binding Add}" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="Black" FontSize="24" Margin="500 500 0 0" Height="40" Width="360"
+          Content="Add" Background="#ebebea" />
+    </Grid>
+</UserControl>

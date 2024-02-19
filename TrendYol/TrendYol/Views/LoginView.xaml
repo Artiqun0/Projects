@@ -9,32 +9,26 @@
              xmlns:ViewModels="clr-namespace:TrendYol.ViewModels" d:DataContext="{d:DesignInstance Type=ViewModels:LoginViewModel}"
              Background="#a3bb5c"
              
-             d:DesignHeight="550" d:DesignWidth="400">
+             d:DesignHeight="768" d:DesignWidth="1366">
 
     <Grid>
 
-        <StackPanel Orientation="Vertical" Margin="20">
-            <TextBlock Text="Sign up" FontSize="40" Margin="20" Foreground="#090909" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Padding="10"/>
-            <Grid VerticalAlignment="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                    <RowDefinition Height="*"/>
-                </Grid.RowDefinitions>
+        <StackPanel Orientation="Vertical" Margin="20" HorizontalAlignment="Center">
+            <TextBlock Text="Sign up" FontSize="50" Margin="20" Foreground="#090909" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Padding="10"/>
 
-                <TextBlock Text="User Name" FontSize="16" Foreground="#090909" Grid.Row="0" Margin="0,15" HorizontalAlignment="Left"/>
-                <TextBox Grid.Column="1" x:Name="usernameTextBox" Text="{Binding TextBox1}" BorderBrush="#ebebea" Grid.Row="1" Padding="0,5" Width="360" BorderThickness="0,0,0,1" HorizontalAlignment="Left"/>
+                <TextBlock Text="User Name" FontSize="28" Foreground="#090909" HorizontalAlignment="Left"/>
+                <TextBox x:Name="usernameTextBox" Text="{Binding TextBox1}" BorderBrush="#ebebea"  Padding="0,5" Width="360" BorderThickness="0,0,0,1" Margin="10" />
 
-                <TextBlock Text="Password" FontSize="16" Foreground="#090909" Grid.Row="2" Margin="0,15" HorizontalAlignment="Left"/>
-                <TextBox Grid.Row="3" x:Name="passwordTextBox" Text="{Binding TextBox2}" Padding="0,5" Width="360" BorderBrush="#ebebea" BorderThickness="0,0,0,1" HorizontalAlignment="Left"/>
-            </Grid>
+                <TextBlock Text="Password" FontSize="28" Foreground="#090909" HorizontalAlignment="Left"/>
+            <TextBox x:Name="passwordTextBox" Text="{Binding TextBox2}" BorderBrush="#ebebea"  Padding="0,5" Width="360" BorderThickness="0,0,0,1" Margin="10"/>
 
-            <Button Content="Forgot password?" Foreground="#090909" Command="{Binding ForgotPassword}" HorizontalAlignment="Right" BorderThickness="0" Background="Transparent"/>
-            <Button x:Name="LoginBtn" Content="Sign up" Foreground="#090909" BorderBrush="#090909" Background="#ebebea" Margin="0,25" Height="35" Width="250" Command="{Binding CompleteLogin}"/>
+            <Button
+                
+                Content="Forgot password?" FontSize="18" Height="50" Foreground="#090909" Command="{Binding ForgotPassword}" BorderThickness="0" Background="Transparent" Margin="10"/>
 
-
-            <Button Content="Doesn't have an account" Foreground="#090909" Background="#ebebea" Command="{Binding DoRegistration}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" Margin="0,5" BorderThickness="0" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
+            <Button x:Name="LoginBtn" Content="Sign up" Foreground="#090909" BorderBrush="#090909" Background="#ebebea"  Height="35" Width="360" Command="{Binding CompleteLogin}" Margin="10"/>
+            
+            <Button Content="Doesn't have an account" Foreground="#090909" Background="#ebebea" Command="{Binding DoRegistration}" CommandParameter="{Binding RelativeSource={RelativeSource Self}}" BorderThickness="0" VerticalAlignment="Bottom" Width="250" HorizontalAlignment="Center" Margin="10"/>
 
         </StackPanel>
 

@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
 using GalaSoft.MvvmLight.Messaging;
 using System;
 using System.Collections.Generic;
@@ -74,6 +75,15 @@ public class AccountViewModel : ViewModelBase
 
         });
 
+    }
+
+    public RelayCommand Back
+    {
+        get => new(
+            () =>
+            {
+                navigationService.NavigateTo<HomePageViewModel>();
+            });
     }
 
 }

@@ -12,23 +12,42 @@ using TrendYol.Services.Interfaces;
 namespace TrendYol.ViewModels;
     public class SuperAdminViewModel : ViewModelBase
 {
-    private readonly INavigationService navigationService;
+    private readonly INavigationService _navigationService;
     private readonly IDataService _dataService;
     private readonly IMessenger _messenger;
 
     TrendyolDbContext _trendyoulDB = new TrendyolDbContext();
-    public SuperAdminViewModel(IMessenger messenger, IDataService dataService)
+    public SuperAdminViewModel(IMessenger messenger, IDataService dataService, INavigationService navigationService)
     {
         _dataService = dataService;
         _messenger = messenger;
+        _navigationService = navigationService;
     }
 
-    public RelayCommand MakeUserAdmin
+    public RelayCommand CreateUser
     {
         get => new(() =>
         {
-            navigationService.NavigateTo<RegisterViewModel>();
+            _navigationService.NavigateTo<CreateUserViewModel>();
         });
+    }
+
+    public RelayCommand CreateAdmin
+    {
+        get => new(
+            () =>
+            {
+                _navigationService.NavigateTo<CreateAdminViewModel>();
+            });
+    }
+
+    public RelayCommand Quit
+    {
+        get => new(
+            () =>
+            {
+                App.Current.Shutdown();
+            });
     }
 
 

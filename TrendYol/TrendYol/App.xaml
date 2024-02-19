@@ -43,6 +43,27 @@
                 <Views:SuperAdminWindow/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type ViewModels:AdminViewModel}">
+                <Views:AdminWindow/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModels:CreateUserViewModel}">
+                <Views:CreateUserView/>
+            </DataTemplate>
+
+
+            <DataTemplate DataType="{x:Type ViewModels:CreateAdminViewModel}">
+                <Views:CreateAdminView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModels:AddProductViewModel}">
+                <Views:AddProductView/>
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModels:CountViewModel}">
+                <Views:CountView/>
+            </DataTemplate>
+
 
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesignTheme.Light.xaml" />

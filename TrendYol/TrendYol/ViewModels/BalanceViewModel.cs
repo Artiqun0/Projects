@@ -55,6 +55,7 @@ namespace TrendYol.ViewModels;
     {
         _messenger = messenger;
         _trendyoulDB = context;
+        _navigation = navigation;
         _currentUserService = currentUserService;
         _currentUserService.PropertyChanged += (sender, args) =>
         {
@@ -102,6 +103,15 @@ namespace TrendYol.ViewModels;
             }
             TextBox1 = string.Empty;
         });
+    }
+
+    public RelayCommand Back
+    {
+        get => new(
+            () =>
+            {
+                _navigation.NavigateTo<HomePageViewModel>();
+            });
     }
 
 }
