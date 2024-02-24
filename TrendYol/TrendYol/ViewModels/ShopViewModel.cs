@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Navigation;
 using TrendYol.Context;
 using TrendYol.Models;
 using TrendYol.Services.Interfaces;
@@ -52,7 +53,7 @@ namespace TrendYol.ViewModels;
         SelectedProduct = selectedProduct;
     }
 
-    public RelayCommand Exit
+    public RelayCommand BackToHome
     {
         get => new(
             () =>

@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TrendYol.Views"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              Background="#a3bb5c"
              d:DesignHeight="768" d:DesignWidth="1366">
@@ -12,9 +13,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Button
-    Command="{Binding Back}"
-    Content="Back" Background="Red" Foreground="Black" HorizontalAlignment="Left" FontSize="20" VerticalAlignment="Top" Width="150" Height="60" Margin="20" />
+        <Button HorizontalAlignment="Left" Foreground="#090909"  VerticalAlignment="Top" Width="85" Height="52" Margin="10,10,0,0" BorderThickness="0" Background="Transparent" Command="{Binding Back}">
+            <md:PackIcon HorizontalAlignment="Center" Height="46" Width="104" Foreground="#ebebea" Kind="ArrowBack"></md:PackIcon>
+        </Button>
 
         <TextBlock
         TextAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Top" FontSize="70"

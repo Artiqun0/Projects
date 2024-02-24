@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:TrendYol.Views" xmlns:viewmodels="clr-namespace:TrendYol.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:ShopViewModel}"
              mc:Ignorable="d" 
              Background="#a3bb5c"
@@ -50,8 +51,8 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </ScrollViewer>
-        <Button
-        Command="{Binding Exit}"
-        Content="Exit" Background="red" FontSize="20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,10" Width="100" Height="40" BorderBrush="Transparent" BorderThickness="2" Foreground="Black"/>
+        <Button HorizontalAlignment="Left" Foreground="#090909"  VerticalAlignment="Top" Width="85" Height="52" Margin="10,10,0,0" BorderThickness="0" Background="Transparent" Command="{Binding BackToHome}">
+            <md:PackIcon HorizontalAlignment="Center" Height="46" Width="104" Foreground="#ebebea" Kind="ArrowBack"></md:PackIcon>
+        </Button>
     </Grid>
 </UserControl>

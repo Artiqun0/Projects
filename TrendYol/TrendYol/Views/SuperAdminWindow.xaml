@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrendYol.Views"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Background="#a3bb5c" Height="768" Width="1366">
@@ -75,13 +76,8 @@
                 </ListBox.ItemTemplate>
             </ListBox>
         </ScrollViewer>
-        <Button
-    
-    BorderBrush="Transparent" BorderThickness="0" Background="Red" Command="{Binding Quit}" Margin="37,28,1144,690" Height="50">
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="ExitToApp" Foreground="Black" Height="27" Width="36"/>
-                <TextBlock Text="Quit" Foreground="Black" FontSize="20"/>
-            </StackPanel>
+        <Button HorizontalAlignment="Left" Foreground="#090909"  VerticalAlignment="Top" Width="85" Height="52" Margin="10,10,0,0" BorderThickness="0" Background="Transparent" Command="{Binding Quit}">
+            <md:PackIcon HorizontalAlignment="Center" Height="46" Width="104" Foreground="#ebebea" Kind="ArrowBack"></md:PackIcon>
         </Button>
         <TextBlock
     Text="Super Admin Panel"

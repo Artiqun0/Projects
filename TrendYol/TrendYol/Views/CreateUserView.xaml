@@ -3,15 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:TrendYol.Views" xmlns:viewmodels="clr-namespace:TrendYol.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:CreateUserViewModel}"
              Background="#a3bb5c"
              mc:Ignorable="d" 
              d:DesignHeight="768" d:DesignWidth="1366">
     <Grid>
 
-        <Button
-Command="{Binding Back}"
-Content="Back"  Background="Red" Foreground="Black" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20" Width="150" Height="60" />
+        <Button HorizontalAlignment="Left" Foreground="#090909"  VerticalAlignment="Top" Width="85" Height="52" Margin="10,10,0,0" BorderThickness="0" Background="Transparent" Command="{Binding Back}">
+            <md:PackIcon HorizontalAlignment="Center" Height="46" Width="104" Foreground="#ebebea" Kind="ArrowBack"></md:PackIcon>
+        </Button>
         <TextBlock  Text="Add user" FontSize="70" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Top"/>
 
         <TextBlock Text="Name" Width="150" Height="40" FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120"/>
@@ -29,9 +30,9 @@ Content="Back"  Background="Red" Foreground="Black" FontSize="24" HorizontalAlig
         Text="{Binding Login}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="600" Margin="280 280"
          Name="txtLogin" Background="#ebebea"  />
 
-        <TextBlock Text="Password" Width="150" Height="40" FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120 360"/>
+        <TextBlock Text="Password" Width="150" Height="40" FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120 360 0 0"/>
         <TextBox
-        Text="{Binding Password}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="600" Margin="280 360"
+        Text="{Binding Password}" HorizontalAlignment="Left" VerticalAlignment="Top" Height="40" Width="600" Margin="280 360 0 0"
          Name="txtPssword" Background="#ebebea" />
 
         <TextBlock Text="Confirm"  Width="150" Height="40" FontSize="28" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="120 440 0 0" />

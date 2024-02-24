@@ -2,6 +2,7 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrendYol.Views"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:TrendYol.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AdminViewModel}" x:Class="TrendYol.Views.AdminWindow"
@@ -34,13 +35,8 @@
             </ListBox.ItemTemplate>
         </ListBox>
 
-        <Button
-    
-            BorderBrush="Transparent" BorderThickness="0" Background="Red" Command="{Binding Quit}" Height="50" Margin="1155,21,20,697" Click="Button_Click">
-            <StackPanel Orientation="Horizontal">
-                <materialDesign:PackIcon Kind="ExitToApp" Foreground="#fff" Height="27" Width="36"/>
-                <TextBlock Text="Quit" Foreground="White" FontSize="20"/>
-            </StackPanel>
+        <Button HorizontalAlignment="Left" Foreground="#090909"  VerticalAlignment="Top" Width="85" Height="52" Margin="10,10,0,0" BorderThickness="0" Background="Transparent" Command="{Binding BackToLogin}">
+            <md:PackIcon HorizontalAlignment="Center" Height="46" Width="104" Foreground="#ebebea" Kind="ArrowBack"></md:PackIcon>
         </Button>
         <Button
     

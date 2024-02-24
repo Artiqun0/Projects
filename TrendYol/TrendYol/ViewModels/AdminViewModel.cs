@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Controls;
+using System.Windows.Navigation;
 using TrendYol.Context;
 using TrendYol.Models;
 using TrendYol.Services.Classes;
@@ -42,7 +43,13 @@ namespace TrendYol.ViewModels;
         _currentUserService = currentUserService;
         Order = new ObservableCollection<Order>(_context.Order.ToList());
     }
-
+    public RelayCommand BackToLogin
+    {
+        get => new(() =>
+        {
+            _navigationService.NavigateTo<LoginViewModel>();
+        });
+    }
     public RelayCommand Add
     {
         get => new(
