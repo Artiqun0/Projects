@@ -91,6 +91,12 @@ namespace TrendYol.ViewModels
                 {
                     try
                     {
+                        
+                        if (_product.Image == null)
+                        {
+                            MessageBox.Show("Choice image");
+                            return;
+                        }
                         var product = _addOrderService.AddProductOrder(Name, Description, Price, Count, _product.Image);
                         if (product != null)
                         {
@@ -99,6 +105,8 @@ namespace TrendYol.ViewModels
                             Stock ware = new Stock()
                             {
                                 ProductId = product.Id,
+                                ProductCount = product.Count,
+                                
                             };
                             _context.Stock.Add(ware);
                             _context.SaveChanges();

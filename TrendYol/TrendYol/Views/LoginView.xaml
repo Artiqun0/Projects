@@ -7,7 +7,7 @@
              xmlns:local="clr-namespace:TrendYol"
              mc:Ignorable="d" 
              xmlns:ViewModels="clr-namespace:TrendYol.ViewModels" d:DataContext="{d:DesignInstance Type=ViewModels:LoginViewModel}"
-             Background="#a3bb5c"
+             
              
              d:DesignHeight="768" d:DesignWidth="1366">
 
@@ -17,10 +17,18 @@
             <TextBlock Text="Sign up" FontSize="50" Margin="20" Foreground="#090909" HorizontalAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Padding="10"/>
 
                 <TextBlock Text="User Name" FontSize="28" Foreground="#090909" HorizontalAlignment="Left"/>
-                <TextBox x:Name="usernameTextBox" Text="{Binding TextBox1}" BorderBrush="#ebebea"  Padding="0,5" Width="360" BorderThickness="0,0,0,1" Margin="10" />
+                <TextBox
+                    FontSize="25"
+                    x:Name="usernameTextBox" Text="{Binding TextBox1}" BorderBrush="#ebebea"  Padding="0,5" Width="360" BorderThickness="0,0,0,1" Margin="10" />
 
-                <TextBlock Text="Password" FontSize="28" Foreground="#090909" HorizontalAlignment="Left"/>
-            <TextBox x:Name="passwordTextBox" Text="{Binding TextBox2}" BorderBrush="#ebebea"  Padding="0,5" Width="360" BorderThickness="0,0,0,1" Margin="10"/>
+                <TextBlock
+                    Text="Password" FontSize="28" Foreground="#090909" HorizontalAlignment="Left"/>
+            <PasswordBox
+                Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}"
+                FontSize="25"
+                PasswordChar="♀"
+                PasswordChanged="passwordTextBox_PasswordChanged"
+                x:Name="passwordTextBox" BorderBrush="#ebebea"  Padding="0,5" Width="360" BorderThickness="0,0,0,1" Margin="10" Height="50"/>
 
             <Button
                 

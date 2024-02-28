@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using TrendYol.Context;
@@ -23,7 +24,7 @@ namespace TrendYol.ViewModels;
 
 
     private string usernameTextBox;
-    private string secetWordTextBox;
+    private string emailTextBox;
     private string newPasswordTextBox;
     private string confirmNewPasswordTextBox;
 
@@ -32,22 +33,30 @@ namespace TrendYol.ViewModels;
         get => usernameTextBox;
         set
         {
-            if (usernameTextBox != value)
+            if (Regex.IsMatch(value, @"^(?=[a-zA-Z0-9_]{3,16}$)(?![_0-9])[a-zA-Z0-9_]+$") || string.IsNullOrEmpty(value))
             {
-                usernameTextBox = value;
-                RaisePropertyChanged(nameof(TextBox1));
+                Set(ref usernameTextBox, value);
+            }
+            else
+            {
+                MessageBox.Show("Enter the correct username");
+                return;
             }
         }
     }
     public string TextBox2
     {
-        get => secetWordTextBox;
+        get => emailTextBox;
         set
         {
-            if (secetWordTextBox != value)
+            if (Regex.IsMatch(value, @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$") || string.IsNullOrEmpty(value))
             {
-                secetWordTextBox = value;
-                RaisePropertyChanged(nameof(TextBox2));
+                Set(ref emailTextBox, value);
+            }
+            else
+            {
+                MessageBox.Show("Enter the correct e-mail");
+                return;
             }
         }
     }
@@ -56,10 +65,14 @@ namespace TrendYol.ViewModels;
         get => newPasswordTextBox;
         set
         {
-            if (newPasswordTextBox != value)
+            if (Regex.IsMatch(value, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\\|[\]{};:'"",.<>/?]).{8,20}$") || string.IsNullOrEmpty(value))
             {
-                newPasswordTextBox = value;
-                RaisePropertyChanged(nameof(TextBox3));
+                Set(ref newPasswordTextBox, value);
+            }
+            else
+            {
+                MessageBox.Show("Enter the correct password");
+                return;
             }
         }
     }
@@ -93,8 +106,6 @@ namespace TrendYol.ViewModels;
             navigationService.NavigateTo<LoginViewModel>();
         });
     }
-
-    string passwordRegex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\\|[\]{};:'"",.<>/?]).{8,20}$";
 
 
     public RelayCommand ResetPassword

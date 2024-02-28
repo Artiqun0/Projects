@@ -32,6 +32,7 @@
                                 <Label Content="Name: "/>
                                 <Label Content="Description: "/>
                                 <Label Content="Count: "/>
+                                <Label Content="Price: "/>
                                 <Label Content="Photo: "/>
 
                             </StackPanel>
@@ -41,6 +42,7 @@
                                 <Label Content="{Binding Name}"/>
                                 <Label Content="{Binding Description}"/>
                                 <Label Content="{Binding Count}"/>
+                                <Label Content="{Binding Price}"/>
                                 <Image
                                  Width="100"
                                  Height="100"

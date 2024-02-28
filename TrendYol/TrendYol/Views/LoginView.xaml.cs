@@ -21,4 +21,12 @@ namespace TrendYol.Views;
         {
             InitializeComponent();
         }
+
+    private void passwordTextBox_PasswordChanged(object sender, RoutedEventArgs e)
+    {
+        if (DataContext != null)
+        {
+            ((dynamic)this.DataContext).TextBox2 = ((PasswordBox)sender).Password;
+        }
     }
+}

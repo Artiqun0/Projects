@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrendYol.Views"
         xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:TrendYol.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:SuperAdminViewModel}"
+             mc:Ignorable="d"
         Background="#a3bb5c" Height="768" Width="1366">
     <Grid>
         <Button
@@ -24,58 +24,54 @@
          Margin="820,106,0,0"
          FontSize="16"
             materialDesign:ButtonAssist.CornerRadius="12"/>
-        <ScrollViewer Margin="10,216,811,87">
-            <ListBox Grid.Row="1"
-         ItemsSource="{Binding User}"
+        <ListBox
+         ItemsSource="{Binding Users}"
          FontSize="17"
          FontWeight="Bold"
-         Height="465" Width="490">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <DockPanel>
-                            <StackPanel 
+         Height="465" Width="490" Margin="107,211,769,92">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <StackPanel 
                     Grid.Row="1">
-                                <Label Content="User ID: "/>
-                                <Label Content="Name: "/>
-                                <Label Content="Email: "/>
-                            </StackPanel>
-                            <StackPanel
+                            <Label Content="User ID: "/>
+                            <Label Content="Name: "/>
+                            <Label Content="Email: "/>
+                        </StackPanel>
+                        <StackPanel
                     Grid.Row="1">
-                                <Label Content="{Binding UserId}"/>
-                                <Label Content="{Binding Name}"/>
-                                <Label Content="{Binding Email}"/>
-                            </StackPanel>
-                        </DockPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </ScrollViewer>
-        <ScrollViewer Margin="784,228,30,38">
-            <ListBox Grid.Row="1"
-             ItemsSource="{Binding Admin, UpdateSourceTrigger=PropertyChanged}"
-             SelectedItem="{Binding SelectedAdmin, UpdateSourceTrigger=PropertyChanged}"
+                            <Label Content="{Binding UserId}"/>
+                            <Label Content="{Binding Username}"/>
+                            <Label Content="{Binding Email}"/>
+                        </StackPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <ListBox
+             ItemsSource="{Binding Admins, UpdateSourceTrigger=PropertyChanged}"
+             
              SelectionMode="Single"
              FontSize="17"
              FontWeight="Bold"
-             Height="502" Width="468" SelectionChanged="ListBox_SelectionChanged">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <DockPanel>
-                            <StackPanel 
+             Height="502" Width="468" SelectionChanged="ListBox_SelectionChanged" Margin="722,208,176,58">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <DockPanel>
+                        <StackPanel 
                         Grid.Row="1">
-                                <Label Content="ID Админа: "/>
-                                <Label Content="Логин: "/>
-                            </StackPanel>
-                            <StackPanel
+                            <Label Content="ID Админа: "/>
+                            <Label Content="Логин: "/>
+                        </StackPanel>
+                        <StackPanel
                         Grid.Row="1">
-                                <Label Content="{Binding AdminId}"/>
-                                <Label Content="{Binding Name}"/>
-                            </StackPanel>
-                        </DockPanel>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </ScrollViewer>
+                            <Label Content="{Binding AdminId}"/>
+                            <Label Content="{Binding Name}"/>
+                        </StackPanel>
+                    </DockPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
         <Button HorizontalAlignment="Left" Foreground="#090909"  VerticalAlignment="Top" Width="85" Height="52" Margin="10,10,0,0" BorderThickness="0" Background="Transparent" Command="{Binding Quit}">
             <md:PackIcon HorizontalAlignment="Center" Height="46" Width="104" Foreground="#ebebea" Kind="ArrowBack"></md:PackIcon>
         </Button>
@@ -93,6 +89,6 @@
             FontSize="30"
             FontWeight="Bold"
             Foreground="#090909" Margin="909,151,325,565"/>
-        
+
     </Grid>
 </UserControl>

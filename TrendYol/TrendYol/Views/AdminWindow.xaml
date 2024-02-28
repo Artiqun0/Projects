@@ -18,13 +18,13 @@
                         <StackPanel 
          Grid.Row="1">
                             <Label Content="ID: "/>
-                            <Label Content="Имя: "/>
-                            <Label Content="Дата: "/>
-                            <Label Content="Статус: "/>
+                            <Label Content="NAme: "/>
+                            <Label Content="Date: "/>
+                            <Label Content="Status: "/>
                         </StackPanel>
                         <StackPanel
          Grid.Row="1">
-                            <Label Content="{Binding ProductId}"/>
+                            <Label Content="{Binding Id}"/>
                             <Label Content="{Binding Product}"/>
                             <Label Content="{Binding Created}"/>
                             <Label Content="{Binding Status}"/>
@@ -46,5 +46,58 @@
                 <TextBlock Text="Add Product" Foreground="Black" FontSize="20"/>
             </StackPanel>
         </Button>
+
+        <RadioButton
+            Foreground="White"
+           
+            Width="150"
+
+    Command="{Binding Check}"
+    IsChecked="{Binding RadioButton.OrderPlaced}"
+    Content="Order Placed"
+    FontSize="18"
+    
+    Margin="42,673,1174,63"/>
+
+        <RadioButton
+            Foreground="White"
+    
+    Command="{Binding Check}"
+    IsChecked="{Binding RadioButton.ArrivedAtTheWarehouse}"
+    Content="Arrived At The Stock"
+    
+
+FontSize="18"
+Margin="204,672,969,64"/>
+
+        <RadioButton
+            Foreground="White"
+            
+    Command="{Binding Check}"
+    IsChecked="{Binding RadioButton.Sent}"
+    
+Content="Sent"
+FontSize="18"
+Margin="413,670,883,62"/>
+
+        <RadioButton
+            Foreground="White"
+            
+    Command="{Binding Check}"
+    IsChecked="{Binding RadioButton.SmartCustomsCheck}"
+    
+Content="At customs check"
+FontSize="18"
+Margin="488,671,707,61"/>
+
+        <RadioButton
+            Foreground="White"
+            
+    Command="{Binding Check}"
+    IsChecked="{Binding RadioButton.InFilial}"
+    
+ Content="In Filial"
+ FontSize="18"
+ Margin="673,670,591,62"/>
     </Grid>
 </UserControl>

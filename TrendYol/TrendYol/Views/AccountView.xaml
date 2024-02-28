@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TrendYol.Views"
-             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:TrendYol.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:AccountViewModel}"
              Background="#a3bb5c"
              mc:Ignorable="d" 
              d:DesignHeight="780" d:DesignWidth="920">
@@ -14,17 +14,21 @@
         </Button>
         <StackPanel Orientation="Vertical">
             <TextBlock Text="Your Account" HorizontalAlignment="Center" FontSize="70" Foreground="#090909" Margin="40"/>
-            
-            <StackPanel Orientation="Horizontal" Margin="0 70">
+            <StackPanel Orientation="Horizontal">
                 <TextBlock Text="User Name: " FontSize="40" Margin="30 10" Foreground="#090909"/>
                 <TextBlock x:Name="UserNameField" Background="#ebebea" Foreground="#090909" Width="500" Text="{Binding Username}" FontSize="30" HorizontalAlignment="Right" Margin="16 10"/>
             </StackPanel>
+            <StackPanel Orientation="Horizontal">
 
-            <StackPanel Orientation="Horizontal" Margin="0 70">
-                
                 <TextBlock Text="E-mail: " FontSize="40" Margin="30 10" Foreground="#090909"/>
                 <TextBlock x:Name="emailField" Background="#ebebea" Text="{Binding Email}" Width="500" FontSize="30" Foreground="#090909" HorizontalAlignment="Right" Margin="100 10"/>
-                
+
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+
+                <TextBlock Text="Secret World: " FontSize="40" Margin="30 10" Foreground="#090909" Width="240"/>
+                <TextBlock x:Name="secret" Background="#ebebea" Text="{Binding SecretWorld}" Width="500" FontSize="30" Foreground="#090909" HorizontalAlignment="Right" Margin="-10 10"/>
+
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" Margin="0 70"/>

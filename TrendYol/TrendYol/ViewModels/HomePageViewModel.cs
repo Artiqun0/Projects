@@ -11,6 +11,9 @@ using TrendYol.Services.Interfaces;
 using System.Windows;
 using TrendYol.Views;
 using MaterialDesignThemes.Wpf;
+using System.Collections.ObjectModel;
+using TrendYol.Models;
+using TrendYol.Context;
 
 namespace TrendYol.ViewModels;
 public class HomePageViewModel : ViewModelBase
@@ -28,18 +31,35 @@ public class HomePageViewModel : ViewModelBase
     private readonly INavigationService navigationService;
     private readonly IDataService _dataService;
     private readonly IMessenger _messenger;
+    private readonly TrendyolDbContext _context;
+    private ObservableCollection<Order> _order;
+    private Order _selectedOrder;
 
-    public HomePageViewModel(IMessenger _messenger, INavigationService navigation)
+    public ObservableCollection<Order> Orders
+    {
+        get => _order;
+        set => Set(ref _order, value);
+
+    }
+
+    public Order SelectedOrders
+    {
+        get => _selectedOrder;
+        set => Set(ref _selectedOrder, value);
+    }
+
+    public HomePageViewModel(TrendyolDbContext context, IMessenger _messenger, INavigationService navigation)
     {
 
         navigationService = navigation;
-
+        _context = context;
         CurrentView = App.Container.GetInstance<RegisterViewModel>();
 
         _messenger.Register<NavigationMessage>(this, message =>
         {
             CurrentView = message.ViewModelType;
         });
+        Orders = new ObservableCollection<Order>(_context.Order);
     }
 
     public RelayCommand GoToAccountInfo
@@ -75,6 +95,7 @@ public class HomePageViewModel : ViewModelBase
 
             });
     }
+
 
 
 }

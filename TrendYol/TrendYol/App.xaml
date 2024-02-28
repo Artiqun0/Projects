@@ -35,9 +35,6 @@
                 <Views:ShopView/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModels:OrdersViewModel}">
-                <Views:OrdersView/>
-            </DataTemplate>
 
             <DataTemplate DataType="{x:Type ViewModels:SuperAdminViewModel}">
                 <Views:SuperAdminWindow/>

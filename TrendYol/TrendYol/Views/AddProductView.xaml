@@ -48,6 +48,5 @@
             <md:PackIcon HorizontalAlignment="Center" Height="46" Width="104" Foreground="#ebebea" Kind="ArrowBack"></md:PackIcon>
         </Button>
 
-
     </Grid>
 </UserControl>

@@ -12,6 +12,7 @@ public class CurrentUserService : INotifyPropertyChanged
 {
     private int _userid;
     private string _login;
+    private string _secret;
     private string _email;
     private double _balance;
 
@@ -47,6 +48,15 @@ public class CurrentUserService : INotifyPropertyChanged
         }
     }
 
+    public string Secret
+    {
+        get => _secret;
+        set
+        {
+            _secret = value;
+            OnPropertyChanged(nameof(Secret));
+        }
+    }
 
 
     public double Balance
@@ -71,6 +81,7 @@ public class CurrentUserService : INotifyPropertyChanged
         Login = user.Username;
         Email = user.Email;
         Balance = user.Balance;
+        Secret = user.SecretWord;
     }
 
 }

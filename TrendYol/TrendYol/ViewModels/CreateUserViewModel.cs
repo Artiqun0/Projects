@@ -99,7 +99,7 @@ namespace TrendYol.ViewModels
                                 var user = _userService.RegisterUser(Name, Email, Password, Secret);
                                 _context.User.Add(user);
                                 _context.SaveChanges();
-                                MessageBox.Show("Succes", "Admin");
+                                MessageBox.Show("Success", "Admin");
                                 Password = "";
                                 TryPassword = "";
                                 _navigationService.NavigateTo<SuperAdminViewModel>();

@@ -5,8 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TrendYol.Views"
-             mc:Ignorable="d" 
-             Background="#a3bb5c"
+             mc:Ignorable="d"
              d:DesignHeight="768" d:DesignWidth="1366">
 
     <UserControl.Resources>
@@ -20,7 +19,9 @@
     </UserControl.Resources>
 
     <Grid>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="30" Margin="10" BorderThickness="0" Background="Transparent" Command="{Binding BackToLogin}">
+        <Button
+            Foreground="Black"
+            HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Height="30" Margin="10" BorderThickness="0" Background="Transparent" Command="{Binding BackToLogin}">
             <md:PackIcon Kind="ArrowBack"></md:PackIcon>
         </Button>
 
@@ -51,7 +52,7 @@
                 </md:PackIcon>
                 <TextBox BorderBrush="#ebebea" x:Name="UsernameTextBox" Text="{Binding TextBox1}" Grid.Row="1" Padding="0,5" Width="360" FontSize="28" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Margin="487,0,0,50" Grid.RowSpan="2"/>
 
-                <TextBlock Text="E-mail" Grid.Row="2" Margin="487,15,0,15" FontSize="28" HorizontalAlignment="Left"/>
+                <TextBlock Text="E-mail" Grid.Row="2" Margin="487,32,0,23" FontSize="28" HorizontalAlignment="Left" Grid.RowSpan="2"/>
                 <md:PackIcon Foreground="#ebebea" Kind="QuestionMarkCircleOutline" Height="28" Width="28" Margin="727,0,0,0" Grid.Row="2" VerticalAlignment="Center">
                     <md:PackIcon.ToolTip>
                         <ToolTip Style="{StaticResource MyToolTipStyle}">
@@ -61,7 +62,7 @@
                 </md:PackIcon>
                 <TextBox BorderBrush="#ebebea" x:Name="EmailTextBox" Text="{Binding TextBox2}" Grid.Row="3" Padding="0,5" Width="360" FontSize="28" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Margin="487,0,0,50" Grid.RowSpan="2"/>
 
-                <TextBlock Text="Password" Grid.Row="4" Margin="487,15,0,15" FontSize="28" Foreground="#090909" HorizontalAlignment="Left"/>
+                <TextBlock Text="Password" Grid.Row="4" Margin="487,33,0,26" FontSize="28" Foreground="#090909" HorizontalAlignment="Left" Grid.RowSpan="2"/>
                 <md:PackIcon Foreground="#ebebea" Kind="QuestionMarkCircleOutline" Height="28" Width="28" Margin="727,0,0,0" VerticalAlignment="Center" Grid.Row="4">
                     <md:PackIcon.ToolTip>
                         <ToolTip Style="{StaticResource MyToolTipStyle}">
@@ -71,7 +72,7 @@
                 </md:PackIcon>
                 <TextBox BorderBrush="#ebebea" x:Name="PasswordTextBox" Text="{Binding TextBox3}" Grid.Row="5" Padding="0,5" Width="360" FontSize="28" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Margin="487,0,0,50" Grid.RowSpan="2"/>
 
-                <TextBlock Text="Confirm Password" Grid.Row="6" Margin="487,5,0,15" Foreground="#090909" FontSize="28" HorizontalAlignment="Left"/>
+                <TextBlock Text="Confirm Password" Grid.Row="6" Margin="487,23,0,12" Foreground="#090909" FontSize="28" HorizontalAlignment="Left" Grid.RowSpan="2"/>
                 <md:PackIcon Foreground="#ebebea" Kind="QuestionMarkCircleOutline" Height="28" Width="28" Margin="727,0,0,0" Grid.Row="6" VerticalAlignment="Center">
                     <md:PackIcon.ToolTip>
                         <ToolTip Style="{StaticResource MyToolTipStyle}">
@@ -81,7 +82,7 @@
                 </md:PackIcon>
                 <TextBox BorderBrush="#ebebea" x:Name="PasswordConfirmTextBox" Text="{Binding TextBox4}" Grid.Row="7" Padding="0,5" Width="360" FontSize="28" BorderThickness="0,0,0,1" HorizontalAlignment="Left" Margin="487,0,0,50" Grid.RowSpan="2"/>
 
-                <TextBlock Text="Secret Word" Grid.Row="8" Margin="487,15,0,15" Foreground="#090909" FontSize="28"  HorizontalAlignment="Left"/>
+                <TextBlock Text="Secret Word" Grid.Row="8" Margin="487,30,0,0" Foreground="#090909" FontSize="28"  HorizontalAlignment="Left"/>
                 <md:PackIcon Foreground="#ebebea" Kind="QuestionMarkCircleOutline" Height="28" Width="28" Margin="727,0,0,0" Grid.Row="8" VerticalAlignment="Center">
                     <md:PackIcon.ToolTip>
                         <ToolTip Style="{StaticResource MyToolTipStyle}">

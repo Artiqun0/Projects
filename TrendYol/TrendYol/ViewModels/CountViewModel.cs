@@ -73,7 +73,7 @@ namespace TrendYol.ViewModels
             get => new(
                 () =>
                 {
-                    _navigationService.NavigateTo<HomePageViewModel>();
+                    _navigationService.NavigateTo<ShopViewModel>();
                 });
         }
 
@@ -84,13 +84,12 @@ namespace TrendYol.ViewModels
                 {
                     try
                     {
-                        int currentId = _currentUserService.UserId;
                         if (_selectedProduct != null)
                         {
-                            var wareHouseProduct = _context.Stock.FirstOrDefault(p => p.ProductId == _selectedProduct.Id);
-                            if (wareHouseProduct != null)
+                            var stock = _context.Stock.FirstOrDefault(p => p.ProductId == _selectedProduct.Id);
+                            if (stock != null)
                             {
-                                if (wareHouseProduct.ProductId < Count)
+                                if (stock.ProductCount < Count)
                                 {
                                     MessageBox.Show("not so namy product in Stock.");
                                     _navigationService.NavigateTo<ShopViewModel>();
@@ -102,32 +101,39 @@ namespace TrendYol.ViewModels
                                     return;
                                 }
 
+                                else if (_currentUserService.Balance < _selectedProduct.Price * Count)
+                                {
+                                    MessageBox.Show("Insufficient funds");
+                                    Count = 0;
+                                    _navigationService.NavigateTo<ShopViewModel>();
+                                    return;
+                                }
+
                             }
-
-                            if (_selectedProduct.Count == 0)
-                            {
-                                _context.Products.Remove(_selectedProduct);
-                                _context.SaveChanges();
-                            }
-
-
                             Order order = new Order
                             {
-                                UserId = currentId,
+                                UserId = _currentUserService.UserId,
                                 Product = _selectedProduct.Name,
                                 ProductsCount = Count,
                                 ProductId = _selectedProduct.Id,
-                                Status = "Order ready",
+                                Status = "Order Placed",
                                 Created = DateTime.Now,
                             };
                             _context.Order.Add(order);
                             _context.SaveChanges();
+
                             var user = _context.User.FirstOrDefault(u => u.UserId == _currentUserService.UserId);
                             _context.SaveChanges();
-                            wareHouseProduct.ProductCount -= Count;
+
+                            stock.ProductCount -= Count;
                             _context.SaveChanges();
+
                             _selectedProduct.Count -= Count;
                             _context.SaveChanges();
+
+                            _currentUserService.Balance -= _selectedProduct.Price * Count;
+                            _context.SaveChanges();
+
                             MessageBox.Show("Successfuly order", "Message", MessageBoxButton.OK, MessageBoxImage.Information);
                             Count = 0;
                             _navigationService.NavigateTo<HomePageViewModel>();

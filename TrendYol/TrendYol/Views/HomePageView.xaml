@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TrendYol.Views"
-        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
-        mc:Ignorable="d" Height="768" Width="1366">
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodels="clr-namespace:TrendYol.ViewModels" d:DataContext="{d:DesignInstance Type=viewmodels:HomePageViewModel}"
+             mc:Ignorable="d" Height="768" Width="1366">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.3*"></ColumnDefinition>
@@ -22,7 +22,35 @@
                 <RowDefinition Height="0.5*"></RowDefinition>
                 <RowDefinition Height="0.3*"></RowDefinition>
             </Grid.RowDefinitions>
+            <ListBox
+ItemsSource="{Binding Orders}"
+SelectedItem="{Binding SelectedOrders}"
+SelectionMode="Single"
+FontSize="17" Margin="363,60,-1000,37" Grid.RowSpan="7">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <DockPanel>
+                            <StackPanel 
+                  Grid.Row="0">
+                                <Label Content="Order ID: "/>
+                                <Label Content="Tracking ID: "/>
+                                <Label Content="Order name: "/>
+                                <Label Content="Order date: "/>
+                                <Label Content="Order status: "/>
+                            </StackPanel>
+                            <StackPanel
+           Grid.Row="0">
+                                <Label Content="{Binding Id}"/>
+                                <Label Content="{Binding TrackingId}"/>
+                                <Label Content="{Binding Product}"/>
+                                <Label Content="{Binding Created}"/>
+                                <Label Content="{Binding Status}"/>
 
+                            </StackPanel>
+                        </DockPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
             <Grid Grid.Row="0" >
                 <Button Grid.Row="0" Command="{Binding GoToAdvertising}" BorderThickness="0">
                     <Button.Style>
@@ -53,15 +81,6 @@
                 </Button>
             </Grid>
             <Grid Grid.Row="2">
-                <Button
-                    BorderBrush="Transparent" BorderThickness="0" Background="#ebebea">
-                    <StackPanel Orientation="Horizontal" >
-                        <md:PackIcon Kind="OrderBoolAscending" Foreground="#090909" Height="30" Width="30"/>
-                        <TextBlock Text="Orders" Foreground="#090909" FontSize="20"/>
-                    </StackPanel>
-                </Button>
-            </Grid>
-            <Grid Grid.Row="3">
                 <Button BorderBrush="Transparent" BorderThickness="0" Background="#ebebea" Command="{Binding GoToAccountInfo}">
                     <StackPanel Orientation="Horizontal">
                         <md:PackIcon Kind="Account" Foreground="#090909" Height="30" Width="30"/>
@@ -69,7 +88,7 @@
                     </StackPanel>
                 </Button>
             </Grid>
-            <Grid Grid.Row="4">
+            <Grid Grid.Row="3">
                 <Button BorderBrush="Transparent" BorderThickness="0" Background="#ebebea" Command="{Binding GoToBalance}">
                     <StackPanel Orientation="Horizontal">
                         <md:PackIcon Kind="AccountBalanceWallet" Foreground="#090909" Height="30" Width="30"/>
@@ -78,7 +97,7 @@
                 </Button>
             </Grid>
 
-            <Grid Grid.Row="5">
+            <Grid Grid.Row="4">
                 <Button
                     
                     BorderBrush="Transparent" BorderThickness="0" Background="Red" Command="{Binding Quit}">
@@ -92,6 +111,6 @@
 
         </Grid>
 
-        
+
     </Grid>
 </UserControl>

@@ -91,7 +91,7 @@ namespace TrendYol.ViewModels;
                     user.Balance = _currentUserService.Balance;
                     _trendyoulDB.SaveChanges();
                     MessageBox.Show("Successful Pay!");
-                    _navigation.NavigateTo<ShopViewModel>();
+                    _navigation.NavigateTo<HomePageViewModel>();
                     TextBox1 = string.Empty;
                 }
                 

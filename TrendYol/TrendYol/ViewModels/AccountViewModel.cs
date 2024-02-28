@@ -22,6 +22,7 @@ public class AccountViewModel : ViewModelBase
 
     private string _username;
     private string _email;
+    private string _secretWorld;
 
     public string Username
     {
@@ -34,6 +35,13 @@ public class AccountViewModel : ViewModelBase
         get { return _email; }
         set { _email = value; }
     }
+
+    public string SecretWorld
+    {
+        get { return _secretWorld; }
+        set { _secretWorld = value; }
+    }
+
     public User _currentUser = new();
     public User CurentUser
     {
@@ -59,6 +67,10 @@ public class AccountViewModel : ViewModelBase
             else if (args.PropertyName == nameof(CurrentUserService.Login))
             {
                 Username = _currentUserService.Login;
+            }
+            else if (args.PropertyName == nameof(CurrentUserService.Secret))
+            {
+                SecretWorld = _currentUserService.Secret;
             }
         };
 

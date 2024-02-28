@@ -35,10 +35,14 @@ namespace TrendYol.ViewModels;
         get => usernameTextBox;
         set
         {
-            if (usernameTextBox != value)
+            if (Regex.IsMatch(value, @"^(?=[a-zA-Z0-9_]{3,16}$)(?![_0-9])[a-zA-Z0-9_]+$") || string.IsNullOrEmpty(value))
             {
-                usernameTextBox = value;
-                RaisePropertyChanged(nameof(TextBox1));
+                Set(ref usernameTextBox, value);
+            }
+            else
+            {
+                MessageBox.Show("Enter the correct username");
+                return;
             }
         }
     }
@@ -47,10 +51,14 @@ namespace TrendYol.ViewModels;
         get => emailTextBox;
         set
         {
-            if (emailTextBox != value)
+            if (Regex.IsMatch(value, @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$") || string.IsNullOrEmpty(value))
             {
-                emailTextBox = value;
-                RaisePropertyChanged(nameof(TextBox2));
+                Set(ref emailTextBox, value);
+            }
+            else
+            {
+                MessageBox.Show("Enter the correct e-mail");
+                return;
             }
         }
     }
@@ -59,10 +67,14 @@ namespace TrendYol.ViewModels;
         get => passwordTextBox;
         set
         {
-            if (passwordTextBox != value)
+            if (Regex.IsMatch(value, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\\|[\]{};:'"",.<>/?]).{8,20}$") || string.IsNullOrEmpty(value))
             {
-                passwordTextBox = value;
-                RaisePropertyChanged(nameof(TextBox3));
+                Set(ref passwordTextBox, value);
+            }
+            else
+            {
+                MessageBox.Show("Enter the correct password");
+                return;
             }
         }
     }
@@ -83,10 +95,14 @@ namespace TrendYol.ViewModels;
         get => secetWordTextBox;
         set
         {
-            if (secetWordTextBox != value)
+            if (Regex.IsMatch(value, @"^(?!\s)(?!.*\s$)[a-zA-Z0-9\s]{5,20}$") || string.IsNullOrEmpty(value))
             {
-                secetWordTextBox = value;
-                RaisePropertyChanged(nameof(TextBox5));
+                Set(ref secetWordTextBox, value);
+            }
+            else
+            {
+                MessageBox.Show("Enter the correct secret world");
+                return;
             }
         }
     }
@@ -128,22 +144,19 @@ namespace TrendYol.ViewModels;
                     MessageBox.Show("Passwords aren't same");
                     return;
                 }
+
                 else
                 {
                     var newuser = _userService.RegisterUser(TextBox1, TextBox2, TextBox3, TextBox5);
                     _context.User.Add(newuser);
                     _context.SaveChanges();
-                    MessageBox.Show("Suceestful register");
+                    MessageBox.Show("Success Register");
                     TextBox1 = "";
                     TextBox2 = "";
                     TextBox3 = "";
                     TextBox5 = "";
                     navigationService.NavigateTo<LoginViewModel>();
-                }
-                
-                
-                
-               
+                }              
             }
             catch (Exception ex)
             {
@@ -153,32 +166,7 @@ namespace TrendYol.ViewModels;
     }
 
 
-    public bool ValidateUserData(string t1, string t2, string t3, string t4, string t5)
-    {
-        string usernameRegex = @"^(?=[a-zA-Z0-9_]{3,16}$)(?![_0-9])[a-zA-Z0-9_]+$";
-        string passwordRegex = @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\\|[\]{};:'"",.<>/?]).{8,20}$";
-        string secretWordRegex = @"^(?!\s)(?!.*\s$)[a-zA-Z0-9\s]{5,20}$";
-        string emailRegex = @"^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$";
-
-        var userNameCheck = _context.User.FirstOrDefault(u => u.Username == TextBox1);
-        var emailCheck = _context.User.FirstOrDefault(u => u.Email == TextBox2);
-
-
-        if (userNameCheck != null && emailCheck != null)
-        {
-            if (t1 == userNameCheck.Username)
-            {
-                MessageBox.Show("A user with the same Username already exists.");
-                return false;
-            }
-            if (t2 == emailCheck.Email)
-            {
-                MessageBox.Show("a user with the same email already exists.");
-            }
-        }
-
-        return true;
-    }
+    
 }
     
 
